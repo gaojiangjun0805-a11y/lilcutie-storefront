@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img" aria-label="North Star Signet Ring demo asset">
+  <rect width="800" height="800" fill="#f7f7f4"/>
+  <circle cx="400" cy="442" r="176" fill="none" stroke="#c9cdd3" stroke-width="66"/>
+  <circle cx="400" cy="442" r="126" fill="none" stroke="#8d949e" stroke-width="18"/>
+  <path d="M324 228h152l70 86-42 110H296l-42-110 70-86z" fill="#d4d8de"/>
+  <path d="M349 258h102l46 57-27 70H330l-27-70 46-57z" fill="#f5f6f7"/>
+  <path d="M400 282l18 45 48 8-37 31 11 47-40-25-40 25 11-47-37-31 48-8 18-45z" fill="#545c68"/>
+  <path d="M476 228l70 86-42 110H400V228z" fill="#aeb5bf" opacity=".35"/>
+  <ellipse cx="400" cy="685" rx="198" ry="23" fill="#c9ced6" opacity=".45"/>
+</svg>

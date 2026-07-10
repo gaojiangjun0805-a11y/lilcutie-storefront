@@ -1,0 +1,2228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="lilcutie is a men&apos;s jewelry storefront for discipline, courage, and meaningful gifts. Ships from China with tracked US delivery.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <title>lilcutie | Meaningful Men&apos;s Jewelry</title>
+  <style>
+    :root {
+      --bg: #070707;
+      --panel: #111111;
+      --panel-2: #191919;
+      --text: #f4f0e8;
+      --muted: #a7a29a;
+      --soft: #d7d0c3;
+      --line: rgba(244, 240, 232, .14);
+      --line-strong: rgba(244, 240, 232, .28);
+      --accent: #d7b46a;
+      --accent-dark: #7a5b21;
+      --danger: #a64235;
+      --shadow: 0 24px 80px rgba(0, 0, 0, .38);
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.5 Arial, Helvetica, sans-serif;
+    }
+
+    body.drawer-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .announcement {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      padding: 9px 18px;
+      background: #d7b46a;
+      color: #080808;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 22px;
+      min-height: 70px;
+      padding: 0 28px;
+      background: rgba(7, 7, 7, .84);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--soft);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .nav a {
+      padding: 24px 0;
+      transition: color .18s ease;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .brand {
+      display: inline-grid;
+      gap: 0;
+      text-align: center;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .brand span:first-child {
+      font-size: 22px;
+    }
+
+    .brand span:last-child {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0;
+    }
+
+    .header-actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .language-select {
+      min-height: 42px;
+      max-width: 122px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .04);
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .icon-button,
+    .menu-button {
+      min-width: 42px;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .04);
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .menu-button {
+      display: none;
+    }
+
+    .cart-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      min-height: 20px;
+      margin-left: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #090909;
+      font-size: 12px;
+    }
+
+    .section {
+      padding: 88px 28px;
+    }
+
+    .section-inner {
+      width: min(1240px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 86dvh;
+      padding: 52px 28px 42px;
+      background:
+        linear-gradient(90deg, rgba(7, 7, 7, .98) 0%, rgba(7, 7, 7, .78) 47%, rgba(7, 7, 7, .30) 100%),
+        url("media/products/lilcutie-golden-shield-pendant.jpg") center right 9% / min(620px, 48vw) no-repeat,
+        #070707;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      width: min(1240px, 100%);
+      min-height: calc(86dvh - 94px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(340px, .75fr);
+      align-items: center;
+      gap: 52px;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: clamp(56px, 8vw, 132px);
+      line-height: .9;
+      letter-spacing: 0;
+    }
+
+    .hero-copy p {
+      max-width: 540px;
+      margin-bottom: 28px;
+      color: var(--soft);
+      font-size: clamp(17px, 2vw, 22px);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      background: var(--accent);
+      color: #080808;
+      font-weight: 900;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      background: #e5c87f;
+      border-color: #e5c87f;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--line-strong);
+    }
+
+    .btn.secondary:hover {
+      border-color: var(--accent);
+      background: rgba(215, 180, 106, .08);
+    }
+
+    .hero-proof {
+      display: grid;
+      gap: 12px;
+      align-self: end;
+      padding-bottom: 24px;
+    }
+
+    .proof-line {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 18px;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .proof-line strong {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .proof-line span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .drop-band {
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--line);
+      background: #0c0c0c;
+      overflow: hidden;
+    }
+
+    .drop-track {
+      width: min(1240px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .drop-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 58px;
+      color: var(--soft);
+      font-size: 13px;
+    }
+
+    .drop-item strong {
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #080808;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    .section-heading {
+      display: grid;
+      gap: 12px;
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 0;
+      font-size: clamp(34px, 5vw, 70px);
+      line-height: .98;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .product-card {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      min-height: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #101010;
+      overflow: hidden;
+    }
+
+    .product-media {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: #ededeb;
+      color: inherit;
+      overflow: hidden;
+    }
+
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+
+    .product-card:hover .product-media img {
+      transform: scale(1.035);
+    }
+
+    .product-badge {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(8, 8, 8, .82);
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .product-info {
+      display: grid;
+      gap: 10px;
+      padding: 16px;
+    }
+
+    .product-info h3 {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .product-info p {
+      min-height: 44px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--soft);
+      font-weight: 800;
+    }
+
+    .compare {
+      color: var(--muted);
+      font-weight: 500;
+      text-decoration: line-through;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .small-btn {
+      min-height: 40px;
+      padding: 0 12px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .small-btn.gold {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #080808;
+    }
+
+    .story {
+      background: #ededeb;
+      color: #111111;
+    }
+
+    .story .section-heading p {
+      color: #46423e;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .story-visual {
+      min-height: 520px;
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, .10), rgba(0, 0, 0, .36)),
+        url("media/products/lilcutie-midnight-pendant-set.jpg") center / cover no-repeat;
+    }
+
+    .story-copy {
+      display: grid;
+      align-content: center;
+      gap: 20px;
+    }
+
+    .story-copy h2 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 72px);
+      line-height: .98;
+      text-transform: uppercase;
+    }
+
+    .story-copy p {
+      max-width: 650px;
+      margin: 0;
+      color: #3f3c37;
+      font-size: 18px;
+    }
+
+    .symbols {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .symbol {
+      padding: 18px;
+      border: 1px solid rgba(0, 0, 0, .18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .38);
+    }
+
+    .symbol strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .symbol span {
+      color: #55504a;
+      font-size: 13px;
+    }
+
+    .bundle {
+      background: #0b0b0b;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .bundle-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .7fr);
+      gap: 18px;
+      align-items: center;
+    }
+
+    .bundle-products {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .bundle-products img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #ededeb;
+    }
+
+    .bundle-copy {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .bundle-copy h2 {
+      margin-bottom: 14px;
+      font-size: clamp(32px, 4vw, 56px);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .bundle-copy p {
+      color: var(--muted);
+    }
+
+    .reviews-grid,
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .review,
+    .policy {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .review p,
+    .policy p {
+      color: var(--muted);
+    }
+
+    .review strong,
+    .policy strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .track {
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      gap: 34px;
+      align-items: center;
+    }
+
+    .track-form {
+      display: grid;
+      gap: 10px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .track-form input {
+      min-height: 48px;
+      width: 100%;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: #080808;
+      color: var(--text);
+      padding: 0 16px;
+      outline: none;
+    }
+
+    .track-form input:focus {
+      border-color: var(--accent);
+    }
+
+    .footer {
+      padding: 48px 28px;
+      border-top: 1px solid var(--line);
+      background: #050505;
+    }
+
+    .footer-inner {
+      width: min(1240px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .drawer-backdrop,
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: rgba(0, 0, 0, .62);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
+    }
+
+    .drawer-backdrop.active,
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 90;
+      width: min(430px, 100vw);
+      height: 100dvh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      background: #0d0d0d;
+      border-left: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      transform: translateX(104%);
+      transition: transform .22s ease;
+    }
+
+    .cart-drawer.active {
+      transform: translateX(0);
+    }
+
+    .drawer-head,
+    .drawer-foot {
+      padding: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .drawer-foot {
+      border-top: 1px solid var(--line);
+      border-bottom: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cart-items {
+      padding: 18px 20px;
+      overflow: auto;
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-item img {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #ededeb;
+    }
+
+    .qty {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .qty button,
+    .close-button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 50% auto auto 50%;
+      z-index: 100;
+      width: min(980px, calc(100vw - 28px));
+      max-height: calc(100dvh - 28px);
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      background: #101010;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: auto;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -48%) scale(.98);
+      transition: opacity .18s ease, transform .18s ease;
+    }
+
+    .modal.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .modal-media {
+      min-height: 100%;
+      background: #ededeb;
+    }
+
+    .modal-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      object-fit: cover;
+    }
+
+    .modal-copy {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      padding: 28px;
+    }
+
+    .modal-copy h2 {
+      margin-bottom: 0;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 8px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .detail-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 75;
+      padding: 92px 28px 28px;
+      background: rgba(7, 7, 7, .96);
+    }
+
+    .mobile-nav.active {
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+
+    .mobile-nav a {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--text);
+      font-size: 24px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      z-index: 120;
+      max-width: min(440px, calc(100vw - 36px));
+      padding: 12px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #111111;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 12px);
+      transition: opacity .18s ease, transform .18s ease;
+    }
+
+    .toast.active {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 980px) {
+      .site-header {
+        grid-template-columns: auto 1fr auto;
+        padding: 0 18px;
+      }
+
+      .menu-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .brand {
+        justify-self: center;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 52px;
+        background:
+          linear-gradient(180deg, rgba(7, 7, 7, .84) 0%, rgba(7, 7, 7, .94) 70%),
+          url("media/products/lilcutie-golden-shield-pendant.jpg") center top 18px / min(520px, 92vw) no-repeat,
+          #070707;
+      }
+
+      .hero-inner {
+        min-height: 760px;
+        grid-template-columns: 1fr;
+        align-items: end;
+        padding-top: 300px;
+      }
+
+      .hero-proof {
+        align-self: auto;
+        padding-bottom: 0;
+      }
+
+      .drop-track,
+      .product-grid,
+      .reviews-grid,
+      .policy-grid,
+      .bundle-grid,
+      .story-grid,
+      .track {
+        grid-template-columns: 1fr;
+      }
+
+      .bundle-products,
+      .symbols {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .modal {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-media img {
+        min-height: 320px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .announcement {
+        display: none;
+      }
+
+      .site-header {
+        min-height: 76px;
+        gap: 10px;
+      }
+
+      .brand span:first-child {
+        font-size: 18px;
+        white-space: nowrap;
+      }
+
+      .brand span:last-child {
+        font-size: 9px;
+      }
+
+      .header-actions .nav-link {
+        display: none;
+      }
+
+      .language-select {
+        max-width: 94px;
+        padding: 0 8px;
+        font-size: 12px;
+      }
+
+      .section {
+        padding: 64px 18px;
+      }
+
+      .hero {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero-inner {
+        min-height: 720px;
+      }
+
+      h1 {
+        font-size: clamp(48px, 16vw, 82px);
+      }
+
+      .cta-row,
+      .card-actions {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .btn,
+      .small-btn {
+        width: 100%;
+      }
+
+      .drop-track,
+      .bundle-products,
+      .symbols,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .story-visual {
+        min-height: 340px;
+      }
+
+      .footer-inner {
+        gap: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">
+    <span data-i18n="announcementDrop">First drop pricing is live</span>
+    <span data-i18n="announcementShipping">Free tracked US shipping over $85</span>
+    <span data-i18n="announcementOrigin">Ships from China</span>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#shop" data-i18n="navShop">Shop</a>
+      <a href="#drops" data-i18n="navDrops">Drops</a>
+      <a href="#story" data-i18n="navStory">Story</a>
+      <a href="#shipping" data-i18n="navShipping">Shipping</a>
+    </nav>
+    <button class="menu-button" type="button" data-menu-toggle aria-label="Open menu" data-i18n="menu">Menu</button>
+    <a class="brand" href="#" aria-label="lilcutie home">
+      <span>lilcutie</span>
+      <span data-i18n="brandTagline">Meaningful Jewelry</span>
+    </a>
+    <div class="header-actions">
+      <select class="language-select" data-language-select aria-label="Language">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+        <option value="de">Deutsch</option>
+        <option value="es">Español</option>
+      </select>
+      <a class="nav-link" href="#track" data-i18n="trackOrder">Track Order</a>
+      <button class="icon-button" type="button" data-cart-open aria-label="Open cart"><span data-i18n="cart">Cart</span> <span class="cart-count" data-cart-count>0</span></button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
+    <a href="#shop" data-i18n="navShop">Shop</a>
+    <a href="#drops" data-i18n="navDrops">Drops</a>
+    <a href="#story" data-i18n="navStory">Story</a>
+    <a href="#shipping" data-i18n="navShipping">Shipping</a>
+    <a href="#contact" data-i18n="navContact">Contact</a>
+  </nav>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="kicker" data-i18n="heroKicker">New symbolic jewelry drop</div>
+          <h1>lilcutie</h1>
+          <p data-i18n="heroBody">Shop meaningful jewelry built around discipline, courage, and the reminder to keep going.</p>
+          <div class="cta-row">
+            <a class="btn" href="#shop" data-i18n="heroPrimary">Shop meaningful jewelry</a>
+            <a class="btn secondary" href="#story" data-i18n="heroSecondary">See the symbols</a>
+          </div>
+        </div>
+        <div class="hero-proof" aria-label="Store promises" data-i18n-attr="aria-label:storePromises">
+          <div class="proof-line">
+            <strong>316L</strong>
+            <span data-i18n="proofMaterial">Stainless steel placeholder line for the first product tests.</span>
+          </div>
+          <div class="proof-line">
+            <strong>7-15</strong>
+            <span data-i18n="proofDelivery">Business days estimated US delivery after dispatch.</span>
+          </div>
+          <div class="proof-line">
+            <strong>14</strong>
+            <span data-i18n="proofReturns">Day returns for unused items in original packaging.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="drop-band" id="drops" aria-label="Store highlights" data-i18n-attr="aria-label:storeHighlights">
+      <div class="drop-track">
+        <div class="drop-item"><span class="mark">01</span><span><strong data-i18n="dropBestTitle">Best Sellers</strong><br><span data-i18n="dropBestBody">Core pieces for the first drop.</span></span></div>
+        <div class="drop-item"><span class="mark">02</span><span><strong data-i18n="dropGiftTitle">Gift Sets</strong><br><span data-i18n="dropGiftBody">Built for birthdays and milestones.</span></span></div>
+        <div class="drop-item"><span class="mark">03</span><span><strong data-i18n="dropShipTitle">Tracked Shipping</strong><br><span data-i18n="dropShipBody">China fulfillment, transparent timing.</span></span></div>
+        <div class="drop-item"><span class="mark">04</span><span><strong data-i18n="dropWarrantyTitle">Warranty Ready</strong><br><span data-i18n="dropWarrantyBody">Quality support after launch.</span></span></div>
+      </div>
+    </section>
+
+    <section class="section" id="shop">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="kicker" data-i18n="shopKicker">Best sellers</div>
+          <h2 data-i18n="shopTitle">Built around a meaning</h2>
+          <p data-i18n="shopBody">These are placeholder products for the first storefront. Replace the names, prices, images, and material specs when your real pieces are ready.</p>
+        </div>
+        <div class="product-grid" data-product-grid></div>
+      </div>
+    </section>
+
+    <section class="section story" id="story">
+      <div class="section-inner story-grid">
+        <div class="story-visual" aria-label="Gift set product visual" data-i18n-attr="aria-label:storyVisual"></div>
+        <div class="story-copy">
+          <div class="kicker" data-i18n="storyKicker">The brand angle</div>
+          <h2 data-i18n="storyTitle">Not just shine. A daily signal.</h2>
+          <p data-i18n="storyBody">Every piece should carry a simple idea: discipline when nobody is watching, resolve when motivation is low, direction when life gets loud.</p>
+          <div class="symbols">
+            <div class="symbol"><strong data-i18n="symbolOneTitle">Discipline</strong><span data-i18n="symbolOneBody">For the promise you keep to yourself.</span></div>
+            <div class="symbol"><strong data-i18n="symbolTwoTitle">Resolve</strong><span data-i18n="symbolTwoBody">For the days when mood is not enough.</span></div>
+            <div class="symbol"><strong data-i18n="symbolThreeTitle">Direction</strong><span data-i18n="symbolThreeBody">For staying pointed toward your standard.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bundle">
+      <div class="section-inner bundle-grid">
+        <div class="bundle-products">
+          <img src="media/products/lilcutie-golden-shield-pendant.jpg" alt="Golden Shield Pendant">
+          <img src="media/products/lilcutie-black-link-bracelet.jpg" alt="Black Link Bracelet">
+          <img src="media/products/lilcutie-silver-signet-ring.jpg" alt="Silver Signet Ring">
+        </div>
+        <div class="bundle-copy">
+          <div class="kicker" data-i18n="bundleKicker">Bundle offer</div>
+          <h2 data-i18n="bundleTitle">Build the set</h2>
+          <p data-i18n="bundleBody">Use this block for a two-piece or three-piece bundle once real products are selected. It is designed for ad traffic from Instagram, X, and Facebook.</p>
+          <button class="btn" type="button" data-add-bundle data-i18n="bundleButton">Add starter set</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="kicker" data-i18n="reviewsKicker">Social proof placeholders</div>
+          <h2 data-i18n="reviewsTitle">Reviews that sell the idea</h2>
+          <p data-i18n="reviewsBody">Replace these with verified customer reviews after real orders start coming in.</p>
+        </div>
+        <div class="reviews-grid">
+          <article class="review">
+            <strong data-i18n="reviewOneTitle">Feels like a daily reminder.</strong>
+            <p data-i18n="reviewOneBody">The design is simple, but the meaning is what makes it work. It feels personal without being loud.</p>
+            <span data-i18n="reviewOneName">Marcus, Austin</span>
+          </article>
+          <article class="review">
+            <strong data-i18n="reviewTwoTitle">Good gift without guessing sizes.</strong>
+            <p data-i18n="reviewTwoBody">The pendant and bracelet format makes it easy to buy as a gift. Packaging matters here.</p>
+            <span data-i18n="reviewTwoName">Daniel, Chicago</span>
+          </article>
+          <article class="review">
+            <strong data-i18n="reviewThreeTitle">Clean enough to wear every day.</strong>
+            <p data-i18n="reviewThreeBody">Black tee, jacket, gym bag, weekend fit. The product photography should show those moments.</p>
+            <span data-i18n="reviewThreeName">Ryan, Seattle</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="shipping">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="kicker" data-i18n="shippingKicker">Shipping, returns, warranty</div>
+          <h2 data-i18n="shippingTitle">Transparent from day one</h2>
+          <p data-i18n="shippingBody">Do not pretend to ship from the US. This storefront is written for China fulfillment with tracked delivery.</p>
+        </div>
+        <div class="policy-grid">
+          <article class="policy">
+            <strong data-i18n="shippingPolicyTitle">Shipping Policy</strong>
+            <p data-i18n="shippingPolicyBody">Ships from China with tracked cross-border delivery. Processing takes 2-4 business days. Estimated US delivery is 7-15 business days after dispatch.</p>
+          </article>
+          <article class="policy">
+            <strong data-i18n="refundPolicyTitle">Refund Policy</strong>
+            <p data-i18n="refundPolicyBody">14-day returns are accepted for unused items in original packaging. Quality issues can be handled with replacement or refund support.</p>
+          </article>
+          <article class="policy">
+            <strong data-i18n="warrantyTitle">Warranty</strong>
+            <p data-i18n="warrantyBody">Launch warranty text can cover manufacturing defects only. Avoid waterproof, sweatproof, hypoallergenic, gold, or silver claims until tested.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="track">
+      <div class="section-inner track">
+        <div class="section-heading">
+          <div class="kicker" data-i18n="trackOrder">Track Order</div>
+          <h2 data-i18n="trackTitle">Order tracking page</h2>
+          <p data-i18n="trackBody">This is the customer-facing tracking entry. Connect it to Shopify, 17TRACK, AfterShip, or your logistics app later.</p>
+        </div>
+        <form class="track-form" data-track-form>
+          <label for="orderNumber" data-i18n="trackLabel">Order number or tracking number</label>
+          <input id="orderNumber" name="orderNumber" placeholder="Example: LC1001 or YT tracking number" data-i18n-attr="placeholder:trackPlaceholder">
+          <button class="btn" type="submit" data-i18n="trackOrder">Track Order</button>
+          <span data-track-message></span>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="kicker" data-i18n="navContact">Contact</div>
+          <h2 data-i18n="contactTitle">Support that protects payments</h2>
+          <p data-i18n="contactBody">Use a real support inbox before advertising. Fast replies, tracking updates, and honest delay messages reduce PayPal disputes and card chargebacks.</p>
+        </div>
+        <div class="policy-grid">
+          <article class="policy"><strong data-i18n="emailTitle">Email</strong><p>support@lilcutie.example</p></article>
+          <article class="policy"><strong data-i18n="socialTitle">Social</strong><p data-i18n="socialBody">Instagram, X, and Facebook ads should all land on this storefront or a product page.</p></article>
+          <article class="policy"><strong data-i18n="responseTitle">Response Time</strong><p data-i18n="responseBody">Target replies within 48 hours while order volume is still small.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+          <a class="brand" href="#top">
+            <span>lilcutie</span>
+            <span data-i18n="brandTagline">Meaningful Jewelry</span>
+          </a>
+        <p data-i18n="footerBody">Temporary storefront prototype for a future Shopify launch.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#shop" data-i18n="navShop">Shop</a>
+        <a href="#shipping" data-i18n="navShipping">Shipping</a>
+        <a href="#track" data-i18n="trackOrder">Track Order</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="drawer-backdrop" data-cart-backdrop></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true" data-i18n-attr="aria-label:cartAria">
+    <div class="drawer-head">
+      <strong data-i18n="yourCart">Your cart</strong>
+      <button class="close-button" type="button" data-cart-close aria-label="Close cart" data-i18n-attr="aria-label:closeCart">X</button>
+    </div>
+    <div class="cart-items" data-cart-items></div>
+    <div class="drawer-foot">
+      <div class="price-row"><span data-i18n="subtotal">Subtotal</span><strong data-cart-total>$0</strong></div>
+      <button class="btn" type="button" data-checkout data-i18n="checkout">Checkout</button>
+      <span class="kicker" data-i18n="checkoutNote">Checkout connects when the Shopify store is live.</span>
+    </div>
+  </aside>
+
+  <div class="modal-backdrop" data-modal-backdrop></div>
+  <section class="modal" data-product-modal aria-label="Product details" aria-hidden="true" data-i18n-attr="aria-label:productDetails">
+    <div class="modal-media"><img src="media/products/lilcutie-golden-shield-pendant.jpg" data-modal-image alt=""></div>
+    <div class="modal-copy">
+      <button class="close-button" type="button" data-modal-close aria-label="Close product details" data-i18n-attr="aria-label:closeProduct">X</button>
+      <div class="kicker" data-modal-badge></div>
+      <h2 data-modal-title></h2>
+      <div class="price-row"><strong data-modal-price></strong><span class="compare" data-modal-compare></span></div>
+      <p data-modal-story></p>
+      <ul class="detail-list">
+        <li><span data-i18n="detailMaterial">Material</span><strong data-modal-material></strong></li>
+        <li><span data-i18n="detailFinish">Finish</span><strong data-modal-finish></strong></li>
+        <li><span data-i18n="detailSize">Size</span><strong data-modal-size></strong></li>
+        <li><span data-i18n="detailOrigin">Origin</span><strong data-i18n="originChina">China</strong></li>
+        <li><span data-i18n="detailDelivery">Delivery</span><strong data-i18n="deliveryWindow">7-15 business days</strong></li>
+      </ul>
+      <button class="btn" type="button" data-modal-add data-i18n="addToCart">Add to cart</button>
+    </div>
+  </section>
+
+  <div class="toast" data-toast></div>
+
+  <script>
+    const supportedLanguages = ["en", "zh", "ja", "de", "es"];
+
+    const translations = {
+      en: {
+        pageTitle: "lilcutie | Meaningful Men's Jewelry",
+        metaDescription: "lilcutie is a men's jewelry storefront for discipline, courage, and meaningful gifts. Ships from China with tracked US delivery.",
+        announcementDrop: "First drop pricing is live",
+        announcementShipping: "Free tracked US shipping over $85",
+        announcementOrigin: "Ships from China",
+        navShop: "Shop",
+        navDrops: "Drops",
+        navStory: "Story",
+        navShipping: "Shipping",
+        navContact: "Contact",
+        menu: "Menu",
+        brandTagline: "Meaningful Jewelry",
+        trackOrder: "Track Order",
+        cart: "Cart",
+        heroKicker: "New symbolic jewelry drop",
+        heroBody: "Shop meaningful jewelry built around discipline, courage, and the reminder to keep going.",
+        heroPrimary: "Shop meaningful jewelry",
+        heroSecondary: "See the symbols",
+        storePromises: "Store promises",
+        proofMaterial: "Stainless steel placeholder line for the first product tests.",
+        proofDelivery: "Business days estimated US delivery after dispatch.",
+        proofReturns: "Day returns for unused items in original packaging.",
+        storeHighlights: "Store highlights",
+        dropBestTitle: "Best Sellers",
+        dropBestBody: "Core pieces for the first drop.",
+        dropGiftTitle: "Gift Sets",
+        dropGiftBody: "Built for birthdays and milestones.",
+        dropShipTitle: "Tracked Shipping",
+        dropShipBody: "China fulfillment, transparent timing.",
+        dropWarrantyTitle: "Warranty Ready",
+        dropWarrantyBody: "Quality support after launch.",
+        shopKicker: "Best sellers",
+        shopTitle: "Built around a meaning",
+        shopBody: "These are placeholder products for the first storefront. Replace the names, prices, images, and material specs when your real pieces are ready.",
+        storyVisual: "Gift set product visual",
+        storyKicker: "The brand angle",
+        storyTitle: "Not just shine. A daily signal.",
+        storyBody: "Every piece should carry a simple idea: discipline when nobody is watching, resolve when motivation is low, direction when life gets loud.",
+        symbolOneTitle: "Discipline",
+        symbolOneBody: "For the promise you keep to yourself.",
+        symbolTwoTitle: "Resolve",
+        symbolTwoBody: "For the days when mood is not enough.",
+        symbolThreeTitle: "Direction",
+        symbolThreeBody: "For staying pointed toward your standard.",
+        bundleKicker: "Bundle offer",
+        bundleTitle: "Build the set",
+        bundleBody: "Use this block for a two-piece or three-piece bundle once real products are selected. It is designed for ad traffic from Instagram, X, and Facebook.",
+        bundleButton: "Add starter set",
+        reviewsKicker: "Social proof placeholders",
+        reviewsTitle: "Reviews that sell the idea",
+        reviewsBody: "Replace these with verified customer reviews after real orders start coming in.",
+        reviewOneTitle: "Feels like a daily reminder.",
+        reviewOneBody: "The design is simple, but the meaning is what makes it work. It feels personal without being loud.",
+        reviewOneName: "Marcus, Austin",
+        reviewTwoTitle: "Good gift without guessing sizes.",
+        reviewTwoBody: "The pendant and bracelet format makes it easy to buy as a gift. Packaging matters here.",
+        reviewTwoName: "Daniel, Chicago",
+        reviewThreeTitle: "Clean enough to wear every day.",
+        reviewThreeBody: "Black tee, jacket, gym bag, weekend fit. The product photography should show those moments.",
+        reviewThreeName: "Ryan, Seattle",
+        shippingKicker: "Shipping, returns, warranty",
+        shippingTitle: "Transparent from day one",
+        shippingBody: "Do not pretend to ship from the US. This storefront is written for China fulfillment with tracked delivery.",
+        shippingPolicyTitle: "Shipping Policy",
+        shippingPolicyBody: "Ships from China with tracked cross-border delivery. Processing takes 2-4 business days. Estimated US delivery is 7-15 business days after dispatch.",
+        refundPolicyTitle: "Refund Policy",
+        refundPolicyBody: "14-day returns are accepted for unused items in original packaging. Quality issues can be handled with replacement or refund support.",
+        warrantyTitle: "Warranty",
+        warrantyBody: "Launch warranty text can cover manufacturing defects only. Avoid waterproof, sweatproof, hypoallergenic, gold, or silver claims until tested.",
+        trackTitle: "Order tracking page",
+        trackBody: "This is the customer-facing tracking entry. Connect it to Shopify, 17TRACK, AfterShip, or your logistics app later.",
+        trackLabel: "Order number or tracking number",
+        trackPlaceholder: "Example: LC1001 or YT tracking number",
+        trackMessage: "Tracking connects after Shopify and logistics apps are installed.",
+        contactTitle: "Support that protects payments",
+        contactBody: "Use a real support inbox before advertising. Fast replies, tracking updates, and honest delay messages reduce PayPal disputes and card chargebacks.",
+        emailTitle: "Email",
+        socialTitle: "Social",
+        socialBody: "Instagram, X, and Facebook ads should all land on this storefront or a product page.",
+        responseTitle: "Response Time",
+        responseBody: "Target replies within 48 hours while order volume is still small.",
+        footerBody: "Temporary storefront prototype for a future Shopify launch.",
+        cartAria: "Shopping cart",
+        yourCart: "Your cart",
+        closeCart: "Close cart",
+        subtotal: "Subtotal",
+        checkout: "Checkout",
+        checkoutNote: "Checkout connects when the Shopify store is live.",
+        productDetails: "Product details",
+        closeProduct: "Close product details",
+        detailMaterial: "Material",
+        detailFinish: "Finish",
+        detailSize: "Size",
+        detailOrigin: "Origin",
+        originChina: "China",
+        detailDelivery: "Delivery",
+        deliveryWindow: "7-15 business days",
+        addToCart: "Add to cart",
+        details: "Details",
+        add: "Add",
+        viewProduct: "View {product}",
+        cartEmpty: "Your cart is empty. Add a symbolic piece from the first drop.",
+        addedToCart: "Added to cart",
+        checkoutToast: "Connect Shopify checkout when the store is live.",
+        products: {
+          "golden-shield": {
+            title: "Golden Shield Pendant",
+            badge: "Best Seller",
+            material: "316L stainless steel",
+            finish: "PVD gold",
+            size: "22 mm pendant, 22 inch chain",
+            story: "A bold shield pendant with a warm gold finish for a clear daily signal."
+          },
+          "black-link": {
+            title: "Black Link Bracelet",
+            badge: "New Drop",
+            material: "316L stainless steel",
+            finish: "Black vacuum plating",
+            size: "8.2 inch bracelet",
+            story: "A black steel link bracelet with a clean center plate and heavy shine."
+          },
+          "silver-signet": {
+            title: "Silver Signet Ring",
+            badge: "Limited",
+            material: "316L stainless steel",
+            finish: "PVD silver",
+            size: "US 8-12 placeholder range",
+            story: "A polished signet ring with a blank face ready for a future symbol."
+          },
+          "midnight-set": {
+            title: "Midnight Pendant Set",
+            badge: "Gift Set",
+            material: "316L stainless steel",
+            finish: "Black polished finish",
+            size: "Pendant plus bracelet gift set",
+            story: "A matching black pendant and bracelet set for a simple first bundle."
+          },
+          "celestial-charm": {
+            title: "Celestial Charm Necklace",
+            badge: "Soft Edge",
+            material: "316L stainless steel",
+            finish: "PVD silver",
+            size: "18 inch chain with charm cluster",
+            story: "A lighter charm necklace for customers who want the brand to feel softer."
+          },
+          "obsidian-cuff": {
+            title: "Obsidian Cuff Bracelet",
+            badge: "Statement",
+            material: "316L stainless steel",
+            finish: "Brushed silver with dark stone accent",
+            size: "Adjustable cuff placeholder size",
+            story: "A polished cuff with a dark center stone look for a sharper product mix."
+          }
+        }
+      },
+      zh: {
+        pageTitle: "lilcutie | 有意义的男士饰品",
+        metaDescription: "lilcutie 是一个面向全球的男士饰品独立站，主打纪律、勇气和有意义的礼物。中国发货，全程可追踪。",
+        announcementDrop: "首批定价已上线",
+        announcementShipping: "美国订单满 $85 免追踪运费",
+        announcementOrigin: "中国发货",
+        navShop: "商店",
+        navDrops: "新品",
+        navStory: "故事",
+        navShipping: "配送",
+        navContact: "联系",
+        menu: "菜单",
+        brandTagline: "有意义的饰品",
+        trackOrder: "查询订单",
+        cart: "购物车",
+        heroKicker: "全新符号饰品系列",
+        heroBody: "选购围绕纪律、勇气和继续前进信念打造的有意义饰品。",
+        heroPrimary: "选购有意义的饰品",
+        heroSecondary: "查看符号含义",
+        storePromises: "店铺承诺",
+        proofMaterial: "首批产品测试使用的 316L 不锈钢占位材质说明。",
+        proofDelivery: "发出后预计美国运输工作日。",
+        proofReturns: "未使用且原包装商品支持退货天数。",
+        storeHighlights: "店铺亮点",
+        dropBestTitle: "热卖款",
+        dropBestBody: "首批主推核心单品。",
+        dropGiftTitle: "礼盒套装",
+        dropGiftBody: "适合生日和纪念日。",
+        dropShipTitle: "可追踪物流",
+        dropShipBody: "中国履约，时效透明。",
+        dropWarrantyTitle: "质保准备",
+        dropWarrantyBody: "上线后提供质量支持。",
+        shopKicker: "热卖款",
+        shopTitle: "围绕意义打造",
+        shopBody: "这些是首版店铺的临时商品。真实产品准备好后，可替换名称、价格、图片和材质参数。",
+        storyVisual: "礼盒套装产品图",
+        storyKicker: "品牌角度",
+        storyTitle: "不只是闪耀。是每天的提醒。",
+        storyBody: "每件饰品都应该承载一个简单想法：无人看见时的纪律，低落时的决心，喧闹生活里的方向。",
+        symbolOneTitle: "纪律",
+        symbolOneBody: "代表你对自己的承诺。",
+        symbolTwoTitle: "决心",
+        symbolTwoBody: "代表情绪不够时仍然行动。",
+        symbolThreeTitle: "方向",
+        symbolThreeBody: "代表保持自己的标准。",
+        bundleKicker: "套装优惠",
+        bundleTitle: "组合一套",
+        bundleBody: "真实产品确定后，这里可用于两件套或三件套。它适合承接 Instagram、X 和 Facebook 的广告流量。",
+        bundleButton: "加入入门套装",
+        reviewsKicker: "评价占位",
+        reviewsTitle: "让意义被看见的评价",
+        reviewsBody: "真实订单开始后，把这里替换成已验证客户评价。",
+        reviewOneTitle: "像每天佩戴的提醒。",
+        reviewOneBody: "设计很简单，但真正打动人的是含义。它很个人化，又不会太张扬。",
+        reviewOneName: "Marcus, Austin",
+        reviewTwoTitle: "不用猜尺寸的好礼物。",
+        reviewTwoBody: "吊坠和手链这种形式很适合送礼。包装在这里很重要。",
+        reviewTwoName: "Daniel, Chicago",
+        reviewThreeTitle: "干净到可以每天戴。",
+        reviewThreeBody: "黑 T、夹克、健身包、周末穿搭。产品图应该展示这些场景。",
+        reviewThreeName: "Ryan, Seattle",
+        shippingKicker: "配送、退货、质保",
+        shippingTitle: "从第一天开始透明",
+        shippingBody: "不要假装美国发货。这个店铺文案按中国履约和可追踪物流来写。",
+        shippingPolicyTitle: "配送政策",
+        shippingPolicyBody: "中国发货，跨境物流全程可追踪。处理时间 2-4 个工作日。发出后预计美国运输 7-15 个工作日。",
+        refundPolicyTitle: "退款政策",
+        refundPolicyBody: "未使用且保持原包装的商品支持 14 天退货。质量问题可通过补发或退款处理。",
+        warrantyTitle: "质保",
+        warrantyBody: "上线初期质保只覆盖制造缺陷。防水、防汗、低敏、真金、真银等承诺必须测试后再写。",
+        trackTitle: "订单查询页面",
+        trackBody: "这是给客户看的物流查询入口。之后可接入 Shopify、17TRACK、AfterShip 或物流应用。",
+        trackLabel: "订单号或物流单号",
+        trackPlaceholder: "例如：LC1001 或云途单号",
+        trackMessage: "物流查询将在 Shopify 和物流应用安装后接入。",
+        contactTitle: "保护收款账户的客服",
+        contactBody: "投广告前要准备真实客服邮箱。快速回复、物流更新和诚实延误通知可以减少 PayPal 争议和信用卡拒付。",
+        emailTitle: "邮箱",
+        socialTitle: "社媒",
+        socialBody: "Instagram、X 和 Facebook 广告都应该跳转到这个独立站或具体商品页。",
+        responseTitle: "回复时间",
+        responseBody: "订单量还小时，目标是在 48 小时内回复。",
+        footerBody: "用于未来 Shopify 上线的临时独立站原型。",
+        cartAria: "购物车",
+        yourCart: "你的购物车",
+        closeCart: "关闭购物车",
+        subtotal: "小计",
+        checkout: "结账",
+        checkoutNote: "Shopify 店铺上线后接入结账。",
+        productDetails: "商品详情",
+        closeProduct: "关闭商品详情",
+        detailMaterial: "材质",
+        detailFinish: "工艺",
+        detailSize: "尺寸",
+        detailOrigin: "产地",
+        originChina: "中国",
+        detailDelivery: "配送",
+        deliveryWindow: "7-15 个工作日",
+        addToCart: "加入购物车",
+        details: "详情",
+        add: "加入",
+        viewProduct: "查看 {product}",
+        cartEmpty: "购物车是空的。先从首批符号饰品里添加一件。",
+        addedToCart: "已加入购物车",
+        checkoutToast: "店铺上线后再连接 Shopify 结账。",
+        products: {
+          "golden-shield": { title: "金色盾牌吊坠", badge: "热卖款", material: "316L 不锈钢", finish: "PVD 镀金", size: "22 mm 吊坠，22 英寸链条", story: "暖金色盾牌吊坠，适合作为清晰的每日信号。" },
+          "black-link": { title: "黑钢链节手链", badge: "新品", material: "316L 不锈钢", finish: "黑色真空电镀", size: "8.2 英寸手链", story: "黑钢链节手链，中央板干净利落，光泽感强。" },
+          "silver-signet": { title: "银色印台戒指", badge: "限量", material: "316L 不锈钢", finish: "PVD 银色", size: "US 8-12 占位尺码", story: "抛光印台戒指，空白戒面以后可加入品牌符号。" },
+          "midnight-set": { title: "午夜吊坠套装", badge: "礼盒", material: "316L 不锈钢", finish: "黑色抛光", size: "吊坠加手链礼盒套装", story: "黑色吊坠与手链组合，适合作为第一款套装。" },
+          "celestial-charm": { title: "星月吊饰项链", badge: "柔和款", material: "316L 不锈钢", finish: "PVD 银色", size: "18 英寸链条和吊饰组合", story: "更柔和的吊饰项链，适合让品牌气质更轻盈。" },
+          "obsidian-cuff": { title: "黑曜石感开口手镯", badge: "强调款", material: "316L 不锈钢", finish: "拉丝银色和深色石感点缀", size: "可调节开口手镯占位尺寸", story: "带深色中心石感的抛光开口手镯，让产品组合更锋利。" }
+        }
+      },
+      ja: {
+        pageTitle: "lilcutie | 意味のあるメンズジュエリー",
+        metaDescription: "lilcutie は、規律、勇気、意味のあるギフトを軸にしたメンズジュエリーのストアです。中国から発送し、追跡付きで届けます。",
+        announcementDrop: "初回ドロップ価格を公開中",
+        announcementShipping: "$85 以上で米国追跡配送が無料",
+        announcementOrigin: "中国から発送",
+        navShop: "ショップ",
+        navDrops: "新作",
+        navStory: "ストーリー",
+        navShipping: "配送",
+        navContact: "連絡先",
+        menu: "メニュー",
+        brandTagline: "意味のあるジュエリー",
+        trackOrder: "注文追跡",
+        cart: "カート",
+        heroKicker: "新しいシンボルジュエリー",
+        heroBody: "規律、勇気、前に進む気持ちを形にしたジュエリーを選べます。",
+        heroPrimary: "意味のあるジュエリーを見る",
+        heroSecondary: "シンボルを見る",
+        storePromises: "ストアの約束",
+        proofMaterial: "初回商品テスト用の 316L ステンレス表記です。",
+        proofDelivery: "発送後の米国配送目安の営業日です。",
+        proofReturns: "未使用、元包装の商品に対応する返品日数です。",
+        storeHighlights: "ストアの特徴",
+        dropBestTitle: "ベストセラー",
+        dropBestBody: "初回ドロップの中心商品。",
+        dropGiftTitle: "ギフトセット",
+        dropGiftBody: "誕生日や節目のギフト向け。",
+        dropShipTitle: "追跡配送",
+        dropShipBody: "中国発送、透明な配送目安。",
+        dropWarrantyTitle: "保証準備済み",
+        dropWarrantyBody: "発売後の品質サポート。",
+        shopKicker: "ベストセラー",
+        shopTitle: "意味を軸にした商品",
+        shopBody: "これは最初のストア用の仮商品です。実物が完成したら、名称、価格、画像、素材情報を差し替えてください。",
+        storyVisual: "ギフトセットの商品ビジュアル",
+        storyKicker: "ブランドの方向性",
+        storyTitle: "輝きだけではない。毎日の合図。",
+        storyBody: "すべてのアイテムに一つの考えを込めます。誰も見ていない時の規律、気分が落ちた時の決意、騒がしい日々の中の方向性。",
+        symbolOneTitle: "規律",
+        symbolOneBody: "自分との約束のために。",
+        symbolTwoTitle: "決意",
+        symbolTwoBody: "気分だけでは足りない日のために。",
+        symbolThreeTitle: "方向",
+        symbolThreeBody: "自分の基準へ向かい続けるために。",
+        bundleKicker: "セット割",
+        bundleTitle: "セットを組む",
+        bundleBody: "実商品が決まった後、2 点または 3 点セット用に使えます。Instagram、X、Facebook 広告からの流入向けです。",
+        bundleButton: "スターターセットを追加",
+        reviewsKicker: "レビュー仮枠",
+        reviewsTitle: "意味を伝えるレビュー",
+        reviewsBody: "実注文が入り始めたら、認証済みレビューに差し替えてください。",
+        reviewOneTitle: "毎日のリマインダーのよう。",
+        reviewOneBody: "デザインはシンプルですが、意味があるから機能します。主張しすぎず個人的です。",
+        reviewOneName: "Marcus, Austin",
+        reviewTwoTitle: "サイズを迷わないギフト。",
+        reviewTwoBody: "ペンダントとブレスレットはギフトにしやすい形です。ここでは包装も大切です。",
+        reviewTwoName: "Daniel, Chicago",
+        reviewThreeTitle: "毎日着けられる清潔感。",
+        reviewThreeBody: "黒 T、ジャケット、ジムバッグ、週末の服装。商品写真でその場面を見せるべきです。",
+        reviewThreeName: "Ryan, Seattle",
+        shippingKicker: "配送、返品、保証",
+        shippingTitle: "最初から透明に",
+        shippingBody: "米国発送のように見せないでください。このストアは中国発送と追跡配送を前提に書いています。",
+        shippingPolicyTitle: "配送ポリシー",
+        shippingPolicyBody: "中国から追跡付きの越境配送で発送します。処理時間は 2-4 営業日。発送後の米国配送目安は 7-15 営業日です。",
+        refundPolicyTitle: "返金ポリシー",
+        refundPolicyBody: "未使用で元包装の商品のみ 14 日以内の返品を受け付けます。品質問題は交換または返金で対応できます。",
+        warrantyTitle: "保証",
+        warrantyBody: "発売初期の保証は製造上の欠陥のみを対象にできます。防水、汗に強い、低アレルギー、金、銀などの表記はテスト後にしてください。",
+        trackTitle: "注文追跡ページ",
+        trackBody: "顧客向けの追跡入口です。後で Shopify、17TRACK、AfterShip、物流アプリに接続します。",
+        trackLabel: "注文番号または追跡番号",
+        trackPlaceholder: "例：LC1001 または YT 追跡番号",
+        trackMessage: "Shopify と物流アプリの導入後に追跡機能を接続します。",
+        contactTitle: "決済を守るサポート",
+        contactBody: "広告開始前に実際のサポートメールを用意してください。早い返信、追跡更新、正直な遅延連絡は PayPal 争議とカードチャージバックを減らします。",
+        emailTitle: "メール",
+        socialTitle: "SNS",
+        socialBody: "Instagram、X、Facebook 広告はこのストアまたは商品ページに誘導してください。",
+        responseTitle: "返信時間",
+        responseBody: "注文数が少ないうちは 48 時間以内の返信を目標にします。",
+        footerBody: "将来の Shopify 公開に向けた仮ストアプロトタイプ。",
+        cartAria: "ショッピングカート",
+        yourCart: "カート",
+        closeCart: "カートを閉じる",
+        subtotal: "小計",
+        checkout: "チェックアウト",
+        checkoutNote: "Shopify ストア公開後にチェックアウトを接続します。",
+        productDetails: "商品詳細",
+        closeProduct: "商品詳細を閉じる",
+        detailMaterial: "素材",
+        detailFinish: "仕上げ",
+        detailSize: "サイズ",
+        detailOrigin: "原産地",
+        originChina: "中国",
+        detailDelivery: "配送",
+        deliveryWindow: "7-15 営業日",
+        addToCart: "カートに追加",
+        details: "詳細",
+        add: "追加",
+        viewProduct: "{product} を見る",
+        cartEmpty: "カートは空です。初回ドロップからシンボルアイテムを追加してください。",
+        addedToCart: "カートに追加しました",
+        checkoutToast: "ストア公開後に Shopify チェックアウトを接続します。",
+        products: {
+          "golden-shield": { title: "ゴールドシールドペンダント", badge: "ベストセラー", material: "316L ステンレス", finish: "PVD ゴールド", size: "22 mm ペンダント、22 インチチェーン", story: "暖かいゴールド仕上げの力強いシールドペンダント。毎日の明確な合図になります。" },
+          "black-link": { title: "ブラックリンクブレスレット", badge: "新作", material: "316L ステンレス", finish: "ブラック真空メッキ", size: "8.2 インチブレスレット", story: "クリーンなセンタープレートと強い光沢を持つブラックスチールのリンクブレスレット。" },
+          "silver-signet": { title: "シルバーシグネットリング", badge: "限定", material: "316L ステンレス", finish: "PVD シルバー", size: "US 8-12 仮サイズ", story: "将来のシンボルを入れられる空白フェイスの磨き上げたシグネットリング。" },
+          "midnight-set": { title: "ミッドナイトペンダントセット", badge: "ギフトセット", material: "316L ステンレス", finish: "ブラックポリッシュ", size: "ペンダントとブレスレットのギフトセット", story: "ブラックペンダントとブレスレットのセット。最初のセット商品に向いています。" },
+          "celestial-charm": { title: "セレスティアルチャームネックレス", badge: "ソフト", material: "316L ステンレス", finish: "PVD シルバー", size: "18 インチチェーンとチャーム", story: "ブランドを少し柔らかく見せたい顧客向けの軽やかなチャームネックレス。" },
+          "obsidian-cuff": { title: "オブシディアンカフブレスレット", badge: "主役アイテム", material: "316L ステンレス", finish: "ブラッシュドシルバーとダークストーン風アクセント", size: "調整可能カフの仮サイズ", story: "ダークな中央石風アクセントを持つ磨き上げたカフ。商品構成を引き締めます。" }
+        }
+      },
+      de: {
+        pageTitle: "lilcutie | Bedeutender Herrenschmuck",
+        metaDescription: "lilcutie ist ein Herrenschmuck-Shop für Disziplin, Mut und sinnvolle Geschenke. Versand aus China mit Sendungsverfolgung.",
+        announcementDrop: "Preise für den ersten Drop sind live",
+        announcementShipping: "Kostenloser US-Versand mit Tracking ab $85",
+        announcementOrigin: "Versand aus China",
+        navShop: "Shop",
+        navDrops: "Drops",
+        navStory: "Story",
+        navShipping: "Versand",
+        navContact: "Kontakt",
+        menu: "Menü",
+        brandTagline: "Schmuck mit Bedeutung",
+        trackOrder: "Bestellung verfolgen",
+        cart: "Warenkorb",
+        heroKicker: "Neuer symbolischer Schmuckdrop",
+        heroBody: "Schmuck mit Bedeutung, gebaut um Disziplin, Mut und die Erinnerung weiterzugehen.",
+        heroPrimary: "Bedeutungsvollen Schmuck kaufen",
+        heroSecondary: "Symbole ansehen",
+        storePromises: "Shop-Versprechen",
+        proofMaterial: "316L Edelstahl als Platzhalter für die ersten Produkttests.",
+        proofDelivery: "Werktage geschätzte US-Lieferzeit nach Versand.",
+        proofReturns: "Tage Rückgabe für unbenutzte Artikel in Originalverpackung.",
+        storeHighlights: "Shop-Highlights",
+        dropBestTitle: "Bestseller",
+        dropBestBody: "Kernstücke für den ersten Drop.",
+        dropGiftTitle: "Geschenksets",
+        dropGiftBody: "Für Geburtstage und Meilensteine.",
+        dropShipTitle: "Versand mit Tracking",
+        dropShipBody: "China-Fulfillment, transparente Zeiten.",
+        dropWarrantyTitle: "Garantie bereit",
+        dropWarrantyBody: "Qualitätssupport nach dem Launch.",
+        shopKicker: "Bestseller",
+        shopTitle: "Um Bedeutung gebaut",
+        shopBody: "Dies sind Platzhalterprodukte für den ersten Store. Ersetze Namen, Preise, Bilder und Materialdaten, sobald deine echten Stücke bereit sind.",
+        storyVisual: "Produktbild des Geschenksets",
+        storyKicker: "Markenwinkel",
+        storyTitle: "Nicht nur Glanz. Ein tägliches Signal.",
+        storyBody: "Jedes Stück soll eine einfache Idee tragen: Disziplin, wenn niemand zusieht, Entschlossenheit, wenn Motivation fehlt, Richtung, wenn das Leben laut wird.",
+        symbolOneTitle: "Disziplin",
+        symbolOneBody: "Für das Versprechen, das du dir selbst gibst.",
+        symbolTwoTitle: "Entschlossenheit",
+        symbolTwoBody: "Für Tage, an denen Stimmung nicht reicht.",
+        symbolThreeTitle: "Richtung",
+        symbolThreeBody: "Für den Fokus auf deinen eigenen Standard.",
+        bundleKicker: "Set-Angebot",
+        bundleTitle: "Set zusammenstellen",
+        bundleBody: "Nutze diesen Block für ein Zwei- oder Drei-Teile-Set, sobald echte Produkte ausgewählt sind. Er ist für Traffic aus Instagram, X und Facebook gedacht.",
+        bundleButton: "Starter-Set hinzufügen",
+        reviewsKicker: "Review-Platzhalter",
+        reviewsTitle: "Reviews, die die Idee verkaufen",
+        reviewsBody: "Ersetze diese nach den ersten echten Bestellungen durch verifizierte Kundenbewertungen.",
+        reviewOneTitle: "Fühlt sich wie eine tägliche Erinnerung an.",
+        reviewOneBody: "Das Design ist schlicht, aber die Bedeutung macht es stark. Persönlich, ohne laut zu sein.",
+        reviewOneName: "Marcus, Austin",
+        reviewTwoTitle: "Gutes Geschenk ohne Größenraten.",
+        reviewTwoBody: "Pendeln und Armbänder lassen sich einfach verschenken. Die Verpackung ist hier wichtig.",
+        reviewTwoName: "Daniel, Chicago",
+        reviewThreeTitle: "Clean genug für jeden Tag.",
+        reviewThreeBody: "Schwarzes T-Shirt, Jacke, Gymbag, Wochenendfit. Die Produktfotos sollten diese Momente zeigen.",
+        reviewThreeName: "Ryan, Seattle",
+        shippingKicker: "Versand, Rückgabe, Garantie",
+        shippingTitle: "Transparent ab Tag eins",
+        shippingBody: "Tue nicht so, als würdest du aus den USA versenden. Dieser Store ist für China-Fulfillment mit Tracking geschrieben.",
+        shippingPolicyTitle: "Versandrichtlinie",
+        shippingPolicyBody: "Versand aus China mit grenzüberschreitendem Tracking. Bearbeitung dauert 2-4 Werktage. Geschätzte US-Lieferzeit nach Versand: 7-15 Werktage.",
+        refundPolicyTitle: "Rückgaberichtlinie",
+        refundPolicyBody: "14 Tage Rückgabe für unbenutzte Artikel in Originalverpackung. Qualitätsprobleme können mit Ersatz oder Rückerstattung gelöst werden.",
+        warrantyTitle: "Garantie",
+        warrantyBody: "Die Launch-Garantie sollte nur Herstellungsfehler abdecken. Wasserfest, schweißfest, hypoallergen, Gold oder Silber erst nach Tests behaupten.",
+        trackTitle: "Seite zur Sendungsverfolgung",
+        trackBody: "Dies ist der Tracking-Einstieg für Kunden. Später mit Shopify, 17TRACK, AfterShip oder deiner Logistik-App verbinden.",
+        trackLabel: "Bestellnummer oder Trackingnummer",
+        trackPlaceholder: "Beispiel: LC1001 oder YT-Trackingnummer",
+        trackMessage: "Tracking wird nach Installation von Shopify und Logistik-Apps verbunden.",
+        contactTitle: "Support, der Zahlungen schützt",
+        contactBody: "Richte vor Werbung ein echtes Support-Postfach ein. Schnelle Antworten, Tracking-Updates und ehrliche Verzögerungsmeldungen reduzieren PayPal-Fälle und Chargebacks.",
+        emailTitle: "E-Mail",
+        socialTitle: "Social",
+        socialBody: "Instagram-, X- und Facebook-Anzeigen sollten auf diesen Store oder eine Produktseite führen.",
+        responseTitle: "Antwortzeit",
+        responseBody: "Solange das Bestellvolumen klein ist, innerhalb von 48 Stunden antworten.",
+        footerBody: "Temporärer Store-Prototyp für einen späteren Shopify-Launch.",
+        cartAria: "Warenkorb",
+        yourCart: "Dein Warenkorb",
+        closeCart: "Warenkorb schließen",
+        subtotal: "Zwischensumme",
+        checkout: "Checkout",
+        checkoutNote: "Checkout wird verbunden, wenn der Shopify-Store live ist.",
+        productDetails: "Produktdetails",
+        closeProduct: "Produktdetails schließen",
+        detailMaterial: "Material",
+        detailFinish: "Finish",
+        detailSize: "Größe",
+        detailOrigin: "Herkunft",
+        originChina: "China",
+        detailDelivery: "Lieferung",
+        deliveryWindow: "7-15 Werktage",
+        addToCart: "In den Warenkorb",
+        details: "Details",
+        add: "Hinzufügen",
+        viewProduct: "{product} ansehen",
+        cartEmpty: "Dein Warenkorb ist leer. Füge ein Symbolstück aus dem ersten Drop hinzu.",
+        addedToCart: "Zum Warenkorb hinzugefügt",
+        checkoutToast: "Shopify-Checkout verbinden, wenn der Store live ist.",
+        products: {
+          "golden-shield": { title: "Goldener Schild-Anhänger", badge: "Bestseller", material: "316L Edelstahl", finish: "PVD Gold", size: "22 mm Anhänger, 22 Zoll Kette", story: "Ein markanter Schild-Anhänger mit warmem Goldfinish als klares tägliches Signal." },
+          "black-link": { title: "Schwarzes Gliederarmband", badge: "Neuer Drop", material: "316L Edelstahl", finish: "Schwarze Vakuumbeschichtung", size: "8.2 Zoll Armband", story: "Ein schwarzes Stahlarmband mit sauberer Mittelplatte und starkem Glanz." },
+          "silver-signet": { title: "Silberner Siegelring", badge: "Limitiert", material: "316L Edelstahl", finish: "PVD Silber", size: "US 8-12 Platzhaltergrößen", story: "Ein polierter Siegelring mit leerer Fläche für ein späteres Symbol." },
+          "midnight-set": { title: "Midnight Anhänger-Set", badge: "Geschenkset", material: "316L Edelstahl", finish: "Schwarz poliert", size: "Anhänger plus Armband als Geschenkset", story: "Passendes schwarzes Anhänger- und Armbandset für ein einfaches erstes Bundle." },
+          "celestial-charm": { title: "Celestial Charm Halskette", badge: "Weicher Look", material: "316L Edelstahl", finish: "PVD Silber", size: "18 Zoll Kette mit Charm-Cluster", story: "Eine leichtere Charm-Halskette für Kunden, die die Marke sanfter erleben wollen." },
+          "obsidian-cuff": { title: "Obsidian Cuff Armband", badge: "Statement", material: "316L Edelstahl", finish: "Gebürstetes Silber mit dunklem Steinakzent", size: "Verstellbare Cuff-Platzhaltergröße", story: "Ein polierter Cuff mit dunklem Stein-Look für einen schärferen Produktmix." }
+        }
+      },
+      es: {
+        pageTitle: "lilcutie | Joyería masculina con significado",
+        metaDescription: "lilcutie es una tienda de joyería masculina para disciplina, valor y regalos con significado. Envío desde China con seguimiento.",
+        announcementDrop: "El precio del primer drop ya está activo",
+        announcementShipping: "Envío rastreado gratis a EE. UU. desde $85",
+        announcementOrigin: "Envío desde China",
+        navShop: "Tienda",
+        navDrops: "Drops",
+        navStory: "Historia",
+        navShipping: "Envío",
+        navContact: "Contacto",
+        menu: "Menú",
+        brandTagline: "Joyería con significado",
+        trackOrder: "Rastrear pedido",
+        cart: "Carrito",
+        heroKicker: "Nuevo drop de joyería simbólica",
+        heroBody: "Compra joyería con significado, creada alrededor de disciplina, valor y el recordatorio de seguir adelante.",
+        heroPrimary: "Comprar joyería con significado",
+        heroSecondary: "Ver símbolos",
+        storePromises: "Promesas de la tienda",
+        proofMaterial: "Línea de acero inoxidable 316L como marcador para las primeras pruebas.",
+        proofDelivery: "Días hábiles estimados de entrega en EE. UU. tras el despacho.",
+        proofReturns: "Días de devolución para artículos sin usar y en su empaque original.",
+        storeHighlights: "Puntos clave",
+        dropBestTitle: "Más vendidos",
+        dropBestBody: "Piezas centrales para el primer drop.",
+        dropGiftTitle: "Sets de regalo",
+        dropGiftBody: "Pensados para cumpleaños y momentos importantes.",
+        dropShipTitle: "Envío con seguimiento",
+        dropShipBody: "Fulfillment desde China con tiempos claros.",
+        dropWarrantyTitle: "Garantía lista",
+        dropWarrantyBody: "Soporte de calidad después del lanzamiento.",
+        shopKicker: "Más vendidos",
+        shopTitle: "Creado alrededor de un significado",
+        shopBody: "Estos son productos temporales para la primera tienda. Cambia nombres, precios, imágenes y materiales cuando tus piezas reales estén listas.",
+        storyVisual: "Imagen del set de regalo",
+        storyKicker: "Ángulo de marca",
+        storyTitle: "No solo brillo. Una señal diaria.",
+        storyBody: "Cada pieza debe llevar una idea simple: disciplina cuando nadie mira, resolución cuando falta motivación, dirección cuando la vida se vuelve ruidosa.",
+        symbolOneTitle: "Disciplina",
+        symbolOneBody: "Para la promesa que te haces a ti mismo.",
+        symbolTwoTitle: "Resolución",
+        symbolTwoBody: "Para los días en que el ánimo no alcanza.",
+        symbolThreeTitle: "Dirección",
+        symbolThreeBody: "Para mantenerte apuntando a tu estándar.",
+        bundleKicker: "Oferta de set",
+        bundleTitle: "Arma el set",
+        bundleBody: "Usa este bloque para un set de dos o tres piezas cuando elijas productos reales. Está pensado para tráfico de anuncios de Instagram, X y Facebook.",
+        bundleButton: "Agregar set inicial",
+        reviewsKicker: "Reseñas temporales",
+        reviewsTitle: "Reseñas que venden la idea",
+        reviewsBody: "Reemplázalas con reseñas verificadas cuando empiecen los pedidos reales.",
+        reviewOneTitle: "Se siente como un recordatorio diario.",
+        reviewOneBody: "El diseño es simple, pero el significado hace que funcione. Se siente personal sin ser ruidoso.",
+        reviewOneName: "Marcus, Austin",
+        reviewTwoTitle: "Buen regalo sin adivinar tallas.",
+        reviewTwoBody: "El formato de colgante y pulsera facilita comprarlo como regalo. El empaque importa aquí.",
+        reviewTwoName: "Daniel, Chicago",
+        reviewThreeTitle: "Limpio para usar todos los días.",
+        reviewThreeBody: "Camiseta negra, chaqueta, bolsa de gimnasio, look de fin de semana. Las fotos deben mostrar esos momentos.",
+        reviewThreeName: "Ryan, Seattle",
+        shippingKicker: "Envío, devoluciones, garantía",
+        shippingTitle: "Transparente desde el primer día",
+        shippingBody: "No finjas enviar desde EE. UU. Esta tienda está escrita para fulfillment desde China con entrega rastreada.",
+        shippingPolicyTitle: "Política de envío",
+        shippingPolicyBody: "Envío desde China con seguimiento internacional. El procesamiento tarda 2-4 días hábiles. La entrega estimada en EE. UU. es de 7-15 días hábiles tras el despacho.",
+        refundPolicyTitle: "Política de reembolso",
+        refundPolicyBody: "Se aceptan devoluciones dentro de 14 días para artículos sin usar y en su empaque original. Los problemas de calidad pueden resolverse con reemplazo o reembolso.",
+        warrantyTitle: "Garantía",
+        warrantyBody: "La garantía de lanzamiento puede cubrir solo defectos de fabricación. Evita promesas de impermeable, resistente al sudor, hipoalergénico, oro o plata hasta tener pruebas.",
+        trackTitle: "Página de rastreo",
+        trackBody: "Esta es la entrada de rastreo para clientes. Conéctala luego a Shopify, 17TRACK, AfterShip o tu app logística.",
+        trackLabel: "Número de pedido o seguimiento",
+        trackPlaceholder: "Ejemplo: LC1001 o número YT",
+        trackMessage: "El rastreo se conectará después de instalar Shopify y las apps logísticas.",
+        contactTitle: "Soporte que protege pagos",
+        contactBody: "Prepara un correo real de soporte antes de anunciar. Respuestas rápidas, actualizaciones de tracking y avisos honestos de retrasos reducen disputas de PayPal y contracargos.",
+        emailTitle: "Email",
+        socialTitle: "Redes",
+        socialBody: "Los anuncios de Instagram, X y Facebook deben llevar a esta tienda o a una página de producto.",
+        responseTitle: "Tiempo de respuesta",
+        responseBody: "Mientras el volumen sea pequeño, responde en menos de 48 horas.",
+        footerBody: "Prototipo temporal de tienda para un futuro lanzamiento en Shopify.",
+        cartAria: "Carrito de compras",
+        yourCart: "Tu carrito",
+        closeCart: "Cerrar carrito",
+        subtotal: "Subtotal",
+        checkout: "Pagar",
+        checkoutNote: "El checkout se conectará cuando la tienda Shopify esté activa.",
+        productDetails: "Detalles del producto",
+        closeProduct: "Cerrar detalles del producto",
+        detailMaterial: "Material",
+        detailFinish: "Acabado",
+        detailSize: "Tamaño",
+        detailOrigin: "Origen",
+        originChina: "China",
+        detailDelivery: "Entrega",
+        deliveryWindow: "7-15 días hábiles",
+        addToCart: "Agregar al carrito",
+        details: "Detalles",
+        add: "Agregar",
+        viewProduct: "Ver {product}",
+        cartEmpty: "Tu carrito está vacío. Agrega una pieza simbólica del primer drop.",
+        addedToCart: "Agregado al carrito",
+        checkoutToast: "Conecta el checkout de Shopify cuando la tienda esté activa.",
+        products: {
+          "golden-shield": { title: "Colgante escudo dorado", badge: "Más vendido", material: "Acero inoxidable 316L", finish: "PVD dorado", size: "Colgante de 22 mm, cadena de 22 pulgadas", story: "Un colgante de escudo con acabado dorado cálido para una señal diaria clara." },
+          "black-link": { title: "Pulsera de eslabones negra", badge: "Nuevo drop", material: "Acero inoxidable 316L", finish: "Chapado negro al vacío", size: "Pulsera de 8.2 pulgadas", story: "Una pulsera de acero negro con placa central limpia y brillo intenso." },
+          "silver-signet": { title: "Anillo sello plateado", badge: "Limitado", material: "Acero inoxidable 316L", finish: "PVD plateado", size: "Rango temporal US 8-12", story: "Un anillo sello pulido con cara en blanco, listo para un símbolo futuro." },
+          "midnight-set": { title: "Set colgante medianoche", badge: "Set de regalo", material: "Acero inoxidable 316L", finish: "Acabado negro pulido", size: "Colgante más pulsera en set de regalo", story: "Set de colgante y pulsera negros para un primer bundle simple." },
+          "celestial-charm": { title: "Collar de charms celestiales", badge: "Suave", material: "Acero inoxidable 316L", finish: "PVD plateado", size: "Cadena de 18 pulgadas con grupo de charms", story: "Un collar de charms más ligero para clientes que quieren una marca más suave." },
+          "obsidian-cuff": { title: "Brazalete obsidiana", badge: "Statement", material: "Acero inoxidable 316L", finish: "Plata cepillada con acento de piedra oscura", size: "Tamaño temporal ajustable", story: "Un brazalete pulido con aspecto de piedra oscura central para una mezcla más marcada." }
+        }
+      }
+    };
+
+    const products = [
+      {
+        id: "golden-shield",
+        title: "Golden Shield Pendant",
+        badge: "Best Seller",
+        price: 49,
+        compare: 68,
+        image: "media/products/lilcutie-golden-shield-pendant.jpg",
+        material: "316L stainless steel",
+        finish: "PVD gold",
+        size: "22 mm pendant, 22 inch chain",
+        story: "A bold shield pendant with a warm gold finish for a clear daily signal."
+      },
+      {
+        id: "black-link",
+        title: "Black Link Bracelet",
+        badge: "New Drop",
+        price: 44,
+        compare: 58,
+        image: "media/products/lilcutie-black-link-bracelet.jpg",
+        material: "316L stainless steel",
+        finish: "Black vacuum plating",
+        size: "8.2 inch bracelet",
+        story: "A black steel link bracelet with a clean center plate and heavy shine."
+      },
+      {
+        id: "silver-signet",
+        title: "Silver Signet Ring",
+        badge: "Limited",
+        price: 42,
+        compare: 56,
+        image: "media/products/lilcutie-silver-signet-ring.jpg",
+        material: "316L stainless steel",
+        finish: "PVD silver",
+        size: "US 8-12 placeholder range",
+        story: "A polished signet ring with a blank face ready for a future symbol."
+      },
+      {
+        id: "midnight-set",
+        title: "Midnight Pendant Set",
+        badge: "Gift Set",
+        price: 79,
+        compare: 104,
+        image: "media/products/lilcutie-midnight-pendant-set.jpg",
+        material: "316L stainless steel",
+        finish: "Black polished finish",
+        size: "Pendant plus bracelet gift set",
+        story: "A matching black pendant and bracelet set for a simple first bundle."
+      },
+      {
+        id: "celestial-charm",
+        title: "Celestial Charm Necklace",
+        badge: "Soft Edge",
+        price: 46,
+        compare: 62,
+        image: "media/products/lilcutie-celestial-charm-necklace.jpg",
+        material: "316L stainless steel",
+        finish: "PVD silver",
+        size: "18 inch chain with charm cluster",
+        story: "A lighter charm necklace for customers who want the brand to feel softer."
+      },
+      {
+        id: "obsidian-cuff",
+        title: "Obsidian Cuff Bracelet",
+        badge: "Statement",
+        price: 52,
+        compare: 74,
+        image: "media/products/lilcutie-obsidian-cuff-bracelet.jpg",
+        material: "316L stainless steel",
+        finish: "Brushed silver with dark stone accent",
+        size: "Adjustable cuff placeholder size",
+        story: "A polished cuff with a dark center stone look for a sharper product mix."
+      }
+    ];
+
+    const state = {
+      cart: [],
+      language: "en",
+      activeProduct: null
+    };
+
+    const money = (value) => `$${Number(value).toFixed(0)}`;
+    const byId = (id) => products.find((product) => product.id === id);
+    const qs = (selector) => document.querySelector(selector);
+    const qsa = (selector) => Array.from(document.querySelectorAll(selector));
+    const t = (key) => translations[state.language]?.[key] || translations.en[key] || key;
+
+    function getInitialLanguage() {
+      try {
+        const saved = window.localStorage.getItem("lilcutie-language");
+        if (supportedLanguages.includes(saved)) return saved;
+      } catch (error) {
+        return "en";
+      }
+
+      const browserLanguage = (navigator.language || "en").slice(0, 2).toLowerCase();
+      return supportedLanguages.includes(browserLanguage) ? browserLanguage : "en";
+    }
+
+    function productCopy(product) {
+      return {
+        ...product,
+        ...(translations.en.products[product.id] || {}),
+        ...(translations[state.language]?.products?.[product.id] || {})
+      };
+    }
+
+    function applyStaticTranslations() {
+      document.documentElement.lang = state.language;
+      document.title = t("pageTitle");
+      const metaDescription = qs('meta[name="description"]');
+      if (metaDescription) metaDescription.setAttribute("content", t("metaDescription"));
+
+      qsa("[data-i18n]").forEach((node) => {
+        node.textContent = t(node.dataset.i18n);
+      });
+
+      qsa("[data-i18n-attr]").forEach((node) => {
+        node.dataset.i18nAttr.split(",").forEach((pair) => {
+          const [attribute, key] = pair.split(":").map((value) => value.trim());
+          if (attribute && key) node.setAttribute(attribute, t(key));
+        });
+      });
+
+      const languageSelect = qs("[data-language-select]");
+      if (languageSelect) languageSelect.value = state.language;
+    }
+
+    function setLanguage(language) {
+      state.language = supportedLanguages.includes(language) ? language : "en";
+      try {
+        window.localStorage.setItem("lilcutie-language", state.language);
+      } catch (error) {
+        // The storefront still works when localStorage is blocked.
+      }
+
+      applyStaticTranslations();
+      renderProducts();
+      renderCart();
+      if (state.activeProduct) openProduct(state.activeProduct, false);
+    }
+
+    function renderProducts() {
+      qs("[data-product-grid]").innerHTML = products.map((product) => {
+        const copy = productCopy(product);
+        return `
+        <article class="product-card">
+          <button class="product-media" type="button" data-product="${product.id}" aria-label="${t("viewProduct").replace("{product}", copy.title)}">
+            <img src="${product.image}" alt="${copy.title}">
+            <span class="product-badge">${copy.badge}</span>
+          </button>
+          <div class="product-info">
+            <h3>${copy.title}</h3>
+            <p>${copy.story}</p>
+            <div class="price-row"><span>${money(product.price)}</span><span class="compare">${money(product.compare)}</span></div>
+            <div class="card-actions">
+              <button class="small-btn" type="button" data-product="${product.id}">${t("details")}</button>
+              <button class="small-btn gold" type="button" data-add="${product.id}">${t("add")}</button>
+            </div>
+          </div>
+        </article>
+      `;
+      }).join("");
+    }
+
+    function openCart() {
+      qs("#cartDrawer").classList.add("active");
+      qs("#cartDrawer").setAttribute("aria-hidden", "false");
+      qs("[data-cart-backdrop]").classList.add("active");
+      document.body.classList.add("drawer-open");
+    }
+
+    function closeCart() {
+      qs("#cartDrawer").classList.remove("active");
+      qs("#cartDrawer").setAttribute("aria-hidden", "true");
+      qs("[data-cart-backdrop]").classList.remove("active");
+      document.body.classList.remove("drawer-open");
+    }
+
+    function addToCart(id, open = true) {
+      const item = state.cart.find((entry) => entry.id === id);
+      if (item) {
+        item.qty += 1;
+      } else {
+        state.cart.push({ id, qty: 1 });
+      }
+      renderCart();
+      showToast(t("addedToCart"));
+      if (open) openCart();
+    }
+
+    function changeQty(id, delta) {
+      const item = state.cart.find((entry) => entry.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        state.cart = state.cart.filter((entry) => entry.id !== id);
+      }
+      renderCart();
+    }
+
+    function renderCart() {
+      const count = state.cart.reduce((total, item) => total + item.qty, 0);
+      const subtotal = state.cart.reduce((total, item) => total + byId(item.id).price * item.qty, 0);
+      qs("[data-cart-count]").textContent = count;
+      qs("[data-cart-total]").textContent = money(subtotal);
+      qs("[data-cart-items]").innerHTML = state.cart.length
+        ? state.cart.map((item) => {
+            const product = byId(item.id);
+            const copy = productCopy(product);
+            return `
+              <div class="cart-item">
+                <img src="${product.image}" alt="${copy.title}">
+                <div>
+                  <strong>${copy.title}</strong>
+                  <div class="qty">
+                    <button type="button" data-qty="${product.id}" data-delta="-1">-</button>
+                    <span>${item.qty}</span>
+                    <button type="button" data-qty="${product.id}" data-delta="1">+</button>
+                  </div>
+                </div>
+                <strong>${money(product.price * item.qty)}</strong>
+              </div>
+            `;
+          }).join("")
+        : `<p>${t("cartEmpty")}</p>`;
+    }
+
+    function openProduct(id, show = true) {
+      const product = byId(id);
+      const copy = productCopy(product);
+      state.activeProduct = id;
+      qs("[data-modal-image]").src = product.image;
+      qs("[data-modal-image]").alt = copy.title;
+      qs("[data-modal-badge]").textContent = copy.badge;
+      qs("[data-modal-title]").textContent = copy.title;
+      qs("[data-modal-price]").textContent = money(product.price);
+      qs("[data-modal-compare]").textContent = money(product.compare);
+      qs("[data-modal-story]").textContent = copy.story;
+      qs("[data-modal-material]").textContent = copy.material;
+      qs("[data-modal-finish]").textContent = copy.finish;
+      qs("[data-modal-size]").textContent = copy.size;
+      qs("[data-modal-add]").dataset.add = product.id;
+      if (show) {
+        qs("[data-product-modal]").classList.add("active");
+        qs("[data-product-modal]").setAttribute("aria-hidden", "false");
+        qs("[data-modal-backdrop]").classList.add("active");
+        document.body.classList.add("drawer-open");
+      }
+    }
+
+    function closeProduct() {
+      qs("[data-product-modal]").classList.remove("active");
+      qs("[data-product-modal]").setAttribute("aria-hidden", "true");
+      qs("[data-modal-backdrop]").classList.remove("active");
+      document.body.classList.remove("drawer-open");
+      state.activeProduct = null;
+    }
+
+    function showToast(message) {
+      const toast = qs("[data-toast]");
+      toast.textContent = message;
+      toast.classList.add("active");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("active"), 2200);
+    }
+
+    function toggleMenu() {
+      qs("[data-mobile-nav]").classList.toggle("active");
+    }
+
+    function bindEvents() {
+      document.addEventListener("click", (event) => {
+        const productButton = event.target.closest("[data-product]");
+        const addButton = event.target.closest("[data-add]");
+        const qtyButton = event.target.closest("[data-qty]");
+
+        if (productButton) openProduct(productButton.dataset.product);
+        if (addButton) addToCart(addButton.dataset.add);
+        if (qtyButton) changeQty(qtyButton.dataset.qty, Number(qtyButton.dataset.delta));
+      });
+
+      qs("[data-add-bundle]").addEventListener("click", () => {
+        addToCart("golden-shield", false);
+        addToCart("black-link", false);
+        addToCart("silver-signet", false);
+        openCart();
+      });
+
+      qs("[data-cart-open]").addEventListener("click", openCart);
+      qs("[data-cart-close]").addEventListener("click", closeCart);
+      qs("[data-cart-backdrop]").addEventListener("click", closeCart);
+      qs("[data-modal-close]").addEventListener("click", closeProduct);
+      qs("[data-modal-backdrop]").addEventListener("click", closeProduct);
+      qs("[data-menu-toggle]").addEventListener("click", toggleMenu);
+      qsa("[data-mobile-nav] a").forEach((link) => link.addEventListener("click", toggleMenu));
+      qs("[data-language-select]").addEventListener("change", (event) => {
+        setLanguage(event.target.value);
+      });
+
+      qs("[data-checkout]").addEventListener("click", () => {
+        showToast(t("checkoutToast"));
+      });
+
+      qs("[data-track-form]").addEventListener("submit", (event) => {
+        event.preventDefault();
+        qs("[data-track-message]").textContent = t("trackMessage");
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeCart();
+          closeProduct();
+          qs("[data-mobile-nav]").classList.remove("active");
+        }
+      });
+    }
+
+    bindEvents();
+    setLanguage(getInitialLanguage());
+  </script>
+</body>
+</html>

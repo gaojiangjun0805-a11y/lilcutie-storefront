@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img" aria-label="Resolve Bar Bracelet demo asset">
+  <rect width="800" height="800" fill="#f8f8f5"/>
+  <ellipse cx="400" cy="428" rx="244" ry="178" fill="none" stroke="#17191d" stroke-width="48"/>
+  <ellipse cx="400" cy="428" rx="188" ry="126" fill="none" stroke="#343840" stroke-width="20"/>
+  <rect x="280" y="336" width="240" height="78" rx="18" fill="#111316"/>
+  <rect x="306" y="358" width="188" height="34" rx="10" fill="#222833"/>
+  <path d="M329 375h142" stroke="#8f98a8" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="259" cy="429" r="20" fill="#111316"/>
+  <circle cx="541" cy="429" r="20" fill="#111316"/>
+  <ellipse cx="400" cy="675" rx="224" ry="24" fill="#c9ced6" opacity=".45"/>
+</svg>

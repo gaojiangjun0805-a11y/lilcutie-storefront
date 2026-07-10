@@ -1,0 +1,5 @@
+platform,order_id,sku,qty,paid_amount,buyer_name,phone,address,deadline
+shopify_us,SU202607100001,USJ-001,1,49.00,Alex Carter,+1-555-0101,"742 Evergreen Terrace, Springfield, IL 62704, United States",2026-07-12 18:00
+shopify_us,SU202607100002,USJ-002,1,44.00,Marcus Lee,+1-555-0102,"118 King Street, Austin, TX 78701, United States",2026-07-12 18:00
+shopify_us,SU202607100003,USJ-003,2,84.00,Jordan Miles,+1-555-0103,"55 Harbor Road, Tampa, FL 33602, United States",2026-07-13 18:00
+shopify_us,SU202607100004,USJ-004,1,69.00,Chris Nolan,+1-555-0104,"910 Pine Avenue, Seattle, WA 98101, United States",2026-07-13 18:00
