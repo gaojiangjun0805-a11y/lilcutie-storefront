@@ -1,5 +1,11 @@
 data/*.db
 data/*.db-*
+data/*.csv
 exports/
 __pycache__/
 .DS_Store
+README.md
+app.py
+tests/
+static/media/approved/
+static/media/products/SN-*/
