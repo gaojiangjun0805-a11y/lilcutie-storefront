@@ -9,3 +9,4 @@ app.py
 tests/
 static/media/approved/
 static/media/products/SN-*/
+.superpowers/

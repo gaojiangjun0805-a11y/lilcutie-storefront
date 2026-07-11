@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="lilcutie is a men&apos;s jewelry storefront for discipline, courage, and meaningful gifts. Ships from China with tracked US delivery.">
+  <meta name="description" content="lilcutie is a global, genderless jewelry edit. First drop ships from China with tracked delivery.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <title>lilcutie | Meaningful Men&apos;s Jewelry</title>
+  <title>lilcutie | First Edition Jewelry</title>
   <style>
     :root {
       --bg: #070707;
@@ -180,16 +180,34 @@
     }
 
     .hero {
+      position: relative;
+      overflow: hidden;
       min-height: 86dvh;
       padding: 52px 28px 42px;
       background:
         linear-gradient(90deg, rgba(7, 7, 7, .98) 0%, rgba(7, 7, 7, .78) 47%, rgba(7, 7, 7, .30) 100%),
-        url("media/products/lilcutie-golden-shield-pendant.jpg") center right 9% / min(620px, 48vw) no-repeat,
+        url("media/products/lilcutie-octa-coin-editorial.jpg") center right / cover no-repeat,
         #070707;
       border-bottom: 1px solid var(--line);
     }
 
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(115deg, transparent 28%, rgba(235, 224, 200, .08) 47%, transparent 64%);
+      opacity: .34;
+      transform: translateX(-80%);
+    }
+
+    .hero-editorial {
+      isolation: isolate;
+    }
+
     .hero-inner {
+      position: relative;
+      z-index: 1;
       width: min(1240px, 100%);
       min-height: calc(86dvh - 94px);
       margin: 0 auto;
@@ -490,7 +508,7 @@
       border-radius: 8px;
       background:
         linear-gradient(180deg, rgba(0, 0, 0, .10), rgba(0, 0, 0, .36)),
-        url("media/products/lilcutie-midnight-pendant-set.jpg") center / cover no-repeat;
+        url("media/products/lilcutie-stardust-zircon-editorial.jpg") center / cover no-repeat;
     }
 
     .story-copy {
@@ -903,7 +921,7 @@
         padding-top: 52px;
         background:
           linear-gradient(180deg, rgba(7, 7, 7, .84) 0%, rgba(7, 7, 7, .94) 70%),
-          url("media/products/lilcutie-golden-shield-pendant.jpg") center top 18px / min(520px, 92vw) no-repeat,
+          url("media/products/lilcutie-octa-coin-editorial.jpg") 62% top / cover no-repeat,
           #070707;
       }
 
@@ -1025,6 +1043,39 @@
         animation: none !important;
       }
     }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-editorial {
+        animation: hero-breathe 14s ease-in-out infinite alternate;
+      }
+
+      .hero-editorial::after {
+        animation: hero-light-pass 9s ease-in-out infinite;
+      }
+
+      .product-card:nth-child(2) .product-media img {
+        animation: product-float 8s ease-in-out infinite alternate;
+      }
+
+      .product-card:nth-child(3) .product-media img {
+        animation: product-float 9s 1.3s ease-in-out infinite alternate;
+      }
+    }
+
+    @keyframes hero-breathe {
+      from { background-position: center, center right, center; }
+      to { background-position: center, 56% 46%, center; }
+    }
+
+    @keyframes hero-light-pass {
+      0%, 20% { transform: translateX(-95%); }
+      68%, 100% { transform: translateX(120%); }
+    }
+
+    @keyframes product-float {
+      from { transform: scale(1.01) translateY(0); }
+      to { transform: scale(1.045) translateY(-7px); }
+    }
   </style>
 </head>
 <body>
@@ -1068,21 +1119,21 @@
   </nav>
 
   <main>
-    <section class="hero" id="top">
+    <section class="hero hero-editorial" id="top">
       <div class="hero-inner">
         <div class="hero-copy">
-          <div class="kicker" data-i18n="heroKicker">New symbolic jewelry drop</div>
+          <div class="kicker" data-i18n="heroKicker">First edition / 2026</div>
           <h1>lilcutie</h1>
-          <p data-i18n="heroBody">Shop meaningful jewelry built around discipline, courage, and the reminder to keep going.</p>
+          <p data-i18n="heroBody">Three polished forms, made to catch the light and move with you.</p>
           <div class="cta-row">
-            <a class="btn" href="#shop" data-i18n="heroPrimary">Shop meaningful jewelry</a>
-            <a class="btn secondary" href="#story" data-i18n="heroSecondary">See the symbols</a>
+            <a class="btn" href="#shop" data-i18n="heroPrimary">Shop the first drop</a>
+            <a class="btn secondary" href="#story" data-i18n="heroSecondary">Meet the pieces</a>
           </div>
         </div>
         <div class="hero-proof" aria-label="Store promises" data-i18n-attr="aria-label:storePromises">
           <div class="proof-line">
-            <strong>316L</strong>
-            <span data-i18n="proofMaterial">Stainless steel placeholder line for the first product tests.</span>
+            <strong>03</strong>
+            <span data-i18n="proofMaterial">Three forms. One first edition.</span>
           </div>
           <div class="proof-line">
             <strong>7-15</strong>
@@ -1109,8 +1160,8 @@
       <div class="section-inner">
         <div class="section-heading">
           <div class="kicker" data-i18n="shopKicker">Best sellers</div>
-          <h2 data-i18n="shopTitle">Built around a meaning</h2>
-          <p data-i18n="shopBody">These are placeholder products for the first storefront. Replace the names, prices, images, and material specs when your real pieces are ready.</p>
+          <h2 data-i18n="shopTitle">The first three</h2>
+          <p data-i18n="shopBody">A coin pendant, a field of stars, and a geometric ring. Wear one or build your own rotation.</p>
         </div>
         <div class="product-grid" data-product-grid></div>
       </div>
@@ -1120,13 +1171,13 @@
       <div class="section-inner story-grid">
         <div class="story-visual" aria-label="Gift set product visual" data-i18n-attr="aria-label:storyVisual"></div>
         <div class="story-copy">
-          <div class="kicker" data-i18n="storyKicker">The brand angle</div>
-          <h2 data-i18n="storyTitle">Not just shine. A daily signal.</h2>
-          <p data-i18n="storyBody">Every piece should carry a simple idea: discipline when nobody is watching, resolve when motivation is low, direction when life gets loud.</p>
+          <div class="kicker" data-i18n="storyKicker">Global cast / one point of view</div>
+          <h2 data-i18n="storyTitle">Make your own signal.</h2>
+          <p data-i18n="storyBody">lilcutie is jewelry for styling your own point of view. Clean forms, hard light, no prescribed rules.</p>
           <div class="symbols">
-            <div class="symbol"><strong data-i18n="symbolOneTitle">Discipline</strong><span data-i18n="symbolOneBody">For the promise you keep to yourself.</span></div>
-            <div class="symbol"><strong data-i18n="symbolTwoTitle">Resolve</strong><span data-i18n="symbolTwoBody">For the days when mood is not enough.</span></div>
-            <div class="symbol"><strong data-i18n="symbolThreeTitle">Direction</strong><span data-i18n="symbolThreeBody">For staying pointed toward your standard.</span></div>
+            <div class="symbol"><strong data-i18n="symbolOneTitle">Form</strong><span data-i18n="symbolOneBody">A clear shape that holds its own.</span></div>
+            <div class="symbol"><strong data-i18n="symbolTwoTitle">Light</strong><span data-i18n="symbolTwoBody">A detail that changes when you move.</span></div>
+            <div class="symbol"><strong data-i18n="symbolThreeTitle">Your way</strong><span data-i18n="symbolThreeBody">Wear it without a label.</span></div>
           </div>
         </div>
       </div>
@@ -1135,15 +1186,15 @@
     <section class="section bundle">
       <div class="section-inner bundle-grid">
         <div class="bundle-products">
-          <img src="media/products/lilcutie-golden-shield-pendant.jpg" alt="Golden Shield Pendant">
-          <img src="media/products/lilcutie-black-link-bracelet.jpg" alt="Black Link Bracelet">
-          <img src="media/products/lilcutie-silver-signet-ring.jpg" alt="Silver Signet Ring">
+          <img src="media/products/lilcutie-octa-coin-editorial.jpg" alt="Octa Coin Pendant">
+          <img src="media/products/lilcutie-stardust-zircon-editorial.jpg" alt="Stardust Zircon Necklace">
+          <img src="media/products/lilcutie-gearline-ring-editorial.jpg" alt="Gearline Ring">
         </div>
         <div class="bundle-copy">
           <div class="kicker" data-i18n="bundleKicker">Bundle offer</div>
-          <h2 data-i18n="bundleTitle">Build the set</h2>
-          <p data-i18n="bundleBody">Use this block for a two-piece or three-piece bundle once real products are selected. It is designed for ad traffic from Instagram, X, and Facebook.</p>
-          <button class="btn" type="button" data-add-bundle data-i18n="bundleButton">Add starter set</button>
+          <h2 data-i18n="bundleTitle">All three, one edit</h2>
+          <p data-i18n="bundleBody">The complete first drop: a warm gold pendant, cool zircon stars, and a geometric ring.</p>
+          <button class="btn" type="button" data-add-bundle data-i18n="bundleButton">Add the full edit</button>
         </div>
       </div>
     </section>
@@ -1151,25 +1202,25 @@
     <section class="section" id="reviews">
       <div class="section-inner">
         <div class="section-heading">
-          <div class="kicker" data-i18n="reviewsKicker">Social proof placeholders</div>
-          <h2 data-i18n="reviewsTitle">Reviews that sell the idea</h2>
-          <p data-i18n="reviewsBody">Replace these with verified customer reviews after real orders start coming in.</p>
+          <div class="kicker" data-i18n="reviewsKicker">Design notes</div>
+          <h2 data-i18n="reviewsTitle">The code of the first drop</h2>
+          <p data-i18n="reviewsBody">The pieces are selected for a clean silhouette, close-up texture, and a different look in changing light.</p>
         </div>
         <div class="reviews-grid">
           <article class="review">
-            <strong data-i18n="reviewOneTitle">Feels like a daily reminder.</strong>
-            <p data-i18n="reviewOneBody">The design is simple, but the meaning is what makes it work. It feels personal without being loud.</p>
-            <span data-i18n="reviewOneName">Marcus, Austin</span>
+            <strong data-i18n="reviewOneTitle">Clean geometry.</strong>
+            <p data-i18n="reviewOneBody">Defined edges and polished surfaces create a look that reads from close or far away.</p>
+            <span data-i18n="reviewOneName">01 / FORM</span>
           </article>
           <article class="review">
-            <strong data-i18n="reviewTwoTitle">Good gift without guessing sizes.</strong>
-            <p data-i18n="reviewTwoBody">The pendant and bracelet format makes it easy to buy as a gift. Packaging matters here.</p>
-            <span data-i18n="reviewTwoName">Daniel, Chicago</span>
+            <strong data-i18n="reviewTwoTitle">Designed to layer.</strong>
+            <p data-i18n="reviewTwoBody">The pendant and necklace can frame a tee, knit, shirt, or bare skin without competing.</p>
+            <span data-i18n="reviewTwoName">02 / LIGHT</span>
           </article>
           <article class="review">
-            <strong data-i18n="reviewThreeTitle">Clean enough to wear every day.</strong>
-            <p data-i18n="reviewThreeBody">Black tee, jacket, gym bag, weekend fit. The product photography should show those moments.</p>
-            <span data-i18n="reviewThreeName">Ryan, Seattle</span>
+            <strong data-i18n="reviewThreeTitle">No fixed uniform.</strong>
+            <p data-i18n="reviewThreeBody">This edit is styled across people, places, and routines. The choice is yours.</p>
+            <span data-i18n="reviewThreeName">03 / YOUR WAY</span>
           </article>
         </div>
       </div>
@@ -1238,7 +1289,7 @@
             <span>lilcutie</span>
             <span data-i18n="brandTagline">Meaningful Jewelry</span>
           </a>
-        <p data-i18n="footerBody">Temporary storefront prototype for a future Shopify launch.</p>
+        <p data-i18n="footerBody">First edition jewelry. Styled globally, fulfilled from China.</p>
       </div>
       <div class="footer-links">
         <a href="#shop" data-i18n="navShop">Shop</a>
@@ -1265,7 +1316,7 @@
 
   <div class="modal-backdrop" data-modal-backdrop></div>
   <section class="modal" data-product-modal aria-label="Product details" aria-hidden="true" data-i18n-attr="aria-label:productDetails">
-    <div class="modal-media"><img src="media/products/lilcutie-golden-shield-pendant.jpg" data-modal-image alt=""></div>
+    <div class="modal-media"><img src="media/products/lilcutie-octa-coin-editorial.jpg" data-modal-image alt=""></div>
     <div class="modal-copy">
       <button class="close-button" type="button" data-modal-close aria-label="Close product details" data-i18n-attr="aria-label:closeProduct">X</button>
       <div class="kicker" data-modal-badge></div>
@@ -1903,79 +1954,81 @@
       }
     };
 
-    const products = [
-      {
-        id: "golden-shield",
-        title: "Golden Shield Pendant",
-        badge: "Best Seller",
-        price: 49,
-        compare: 68,
-        image: "media/products/lilcutie-golden-shield-pendant.jpg",
-        material: "316L stainless steel",
-        finish: "PVD gold",
-        size: "22 mm pendant, 22 inch chain",
-        story: "A bold shield pendant with a warm gold finish for a clear daily signal."
+    const launchCopy = {
+      en: {
+        pageTitle: "lilcutie | First Edition Jewelry",
+        metaDescription: "lilcutie is a global, genderless jewelry edit. First drop ships from China with tracked delivery.",
+        brandTagline: "First Edition Jewelry",
+        heroKicker: "First edition / 2026",
+        heroBody: "Three polished forms, made to catch the light and move with you.",
+        heroPrimary: "Shop the first drop",
+        heroSecondary: "Meet the pieces",
+        proofMaterial: "Three forms. One first edition.",
+        shopKicker: "First drop",
+        shopTitle: "The first three",
+        shopBody: "A coin pendant, a field of stars, and a geometric ring. Wear one or build your own rotation.",
+        storyKicker: "Global cast / one point of view",
+        storyTitle: "Make your own signal.",
+        storyBody: "lilcutie is jewelry for styling your own point of view. Clean forms, hard light, no prescribed rules.",
+        symbolOneTitle: "Form", symbolOneBody: "A clear shape that holds its own.",
+        symbolTwoTitle: "Light", symbolTwoBody: "A detail that changes when you move.",
+        symbolThreeTitle: "Your way", symbolThreeBody: "Wear it without a label.",
+        bundleTitle: "All three, one edit",
+        bundleBody: "The complete first drop: a warm gold pendant, cool zircon stars, and a geometric ring.",
+        bundleButton: "Add the full edit",
+        footerBody: "First edition jewelry. Styled globally, fulfilled from China.",
+        reviewsKicker: "Design notes", reviewsTitle: "The code of the first drop", reviewsBody: "The pieces are selected for a clean silhouette, close-up texture, and a different look in changing light.",
+        reviewOneTitle: "Clean geometry.", reviewOneBody: "Defined edges and polished surfaces create a look that reads from close or far away.", reviewOneName: "01 / FORM",
+        reviewTwoTitle: "Designed to layer.", reviewTwoBody: "The pendant and necklace can frame a tee, knit, shirt, or bare skin without competing.", reviewTwoName: "02 / LIGHT",
+        reviewThreeTitle: "No fixed uniform.", reviewThreeBody: "This edit is styled across people, places, and routines. The choice is yours.", reviewThreeName: "03 / YOUR WAY",
+        products: {
+          "octa-coin": { title: "Octa Coin Pendant", badge: "First Edition", material: "Gold-tone fashion metal", finish: "Polished gold-tone finish", size: "Chain details confirmed before checkout", story: "An octagonal coin pendant with a quiet eight-point star, made for layering or wearing alone." },
+          "stardust-zircon": { title: "Stardust Zircon Necklace", badge: "New", material: "Zircon-set fashion metal", finish: "Polished silver-tone finish", size: "Chain details confirmed before checkout", story: "A close line of zircon stars that catches a different light every time you move." },
+          "gearline-ring": { title: "Gearline Ring", badge: "Limited", material: "Vacuum-plated fashion metal", finish: "Polished gold-tone finish", size: "Select your size before checkout", story: "A geometric gear-edge ring with a clean, mechanical profile." }
+        }
       },
-      {
-        id: "black-link",
-        title: "Black Link Bracelet",
-        badge: "New Drop",
-        price: 44,
-        compare: 58,
-        image: "media/products/lilcutie-black-link-bracelet.jpg",
-        material: "316L stainless steel",
-        finish: "Black vacuum plating",
-        size: "8.2 inch bracelet",
-        story: "A black steel link bracelet with a clean center plate and heavy shine."
+      zh: {
+        pageTitle: "lilcutie | 首发饰品系列", brandTagline: "首发饰品系列", heroKicker: "首发系列 / 2026", heroBody: "三种抛光造型，跟着你的节奏捕捉光线。", heroPrimary: "选购首发系列", heroSecondary: "认识这三件", proofMaterial: "三种造型，一次首发。", shopKicker: "首发系列", shopTitle: "首发三件", shopBody: "八芒星钱币吊坠、满天星锆石项链、几何齿轮戒指。单戴或自由组合。", storyKicker: "全球面孔 / 同一种态度", storyTitle: "戴出你的信号。", storyBody: "lilcutie 用干净的造型、强烈的光线和不设定标签的方式，让饰品成为你的表达。", symbolOneTitle: "造型", symbolOneBody: "清晰的轮廓，自成一体。", symbolTwoTitle: "光线", symbolTwoBody: "移动时才会显现的细节。", symbolThreeTitle: "你的方式", symbolThreeBody: "不需要被定义。", bundleTitle: "三件，一次到位", bundleBody: "完整首发系列：暖金吊坠、冷银锆石星芒与几何戒指。", bundleButton: "加入完整套装", footerBody: "首发饰品系列。全球风格，中国履约。", reviewsKicker: "设计语言", reviewsTitle: "首发系列的三条准则", reviewsBody: "这三件饰品围绕干净的轮廓、近距离的质感和随光线变化的细节挑选。", reviewOneTitle: "干净的几何感。", reviewOneBody: "清晰边缘和抛光表面，让它在近看或远看时都有存在感。", reviewOneName: "01 / 造型", reviewTwoTitle: "为叠戴而生。", reviewTwoBody: "吊坠和项链可搭配 T 恤、针织、衬衫或肌肤，不抢造型。", reviewTwoName: "02 / 光线", reviewThreeTitle: "没有固定穿法。", reviewThreeBody: "这组饰品适合不同的人、场景与日常。由你决定怎么戴。", reviewThreeName: "03 / 你的方式", products: {
+          "octa-coin": { title: "八芒星钱币吊坠", badge: "首发款", material: "金色调时尚金属", finish: "抛光金色调工艺", size: "下单前确认链长信息", story: "八边形钱币吊坠，刻有低调八芒星，适合叠戴或单独佩戴。" },
+          "stardust-zircon": { title: "满天星锆石项链", badge: "新品", material: "锆石镶嵌时尚金属", finish: "抛光银色调工艺", size: "下单前确认链长信息", story: "一串细小锆石星芒，随身体移动捕捉不同角度的光。" },
+          "gearline-ring": { title: "齿轮线条戒指", badge: "限量", material: "真空电镀时尚金属", finish: "抛光金色调工艺", size: "下单前选择戒指尺寸", story: "几何齿轮边戒指，干净利落，带一点机械感。" }
+        }
       },
-      {
-        id: "silver-signet",
-        title: "Silver Signet Ring",
-        badge: "Limited",
-        price: 42,
-        compare: 56,
-        image: "media/products/lilcutie-silver-signet-ring.jpg",
-        material: "316L stainless steel",
-        finish: "PVD silver",
-        size: "US 8-12 placeholder range",
-        story: "A polished signet ring with a blank face ready for a future symbol."
+      ja: {
+        pageTitle: "lilcutie | ファーストエディション", brandTagline: "ファーストエディション", heroKicker: "FIRST EDITION / 2026", heroBody: "光を捉え、あなたと動く三つのポリッシュドフォーム。", heroPrimary: "ファーストドロップを見る", heroSecondary: "3 ピースを見る", proofMaterial: "3 つのフォルム、ひとつの初回作。", shopKicker: "FIRST DROP", shopTitle: "FIRST THREE", shopBody: "コインペンダント、星のネックレス、幾何学リング。ひとつでも、自由な組み合わせでも。", bundleTitle: "3 つでひとつの EDIT", bundleBody: "最初の三作を揃えたセット。", bundleButton: "フルセットに追加", footerBody: "世界のスタイル、中国からのフルフィルメント。", reviewsKicker: "DESIGN NOTES", reviewsTitle: "FIRST DROP のコード", reviewsBody: "クリーンなシルエット、近距離での質感、変化する光を基準に選びました。", reviewOneTitle: "クリーンな幾何学。", reviewOneBody: "明確なエッジと磨かれた面。", reviewOneName: "01 / FORM", reviewTwoTitle: "レイヤーのために。", reviewTwoBody: "単体でも重ねても映える設計。", reviewTwoName: "02 / LIGHT", reviewThreeTitle: "決まった着け方はない。", reviewThreeBody: "あなた自身のルールで着けてください。", reviewThreeName: "03 / YOUR WAY", products: {
+          "octa-coin": { title: "オクタコインペンダント", badge: "FIRST EDITION", material: "ゴールドトーンファッションメタル", finish: "ポリッシュドゴールドトーン", size: "チェーン詳細は購入前に確認", story: "控えめな八芒星を刻んだ、八角形のコインペンダント。" },
+          "stardust-zircon": { title: "スターダストジルコンネックレス", badge: "NEW", material: "ジルコンセットファッションメタル", finish: "ポリッシュドシルバートーン", size: "チェーン詳細は購入前に確認", story: "動くたびに違う光を捉える、小さな星のライン。" },
+          "gearline-ring": { title: "ギアラインリング", badge: "LIMITED", material: "真空メッキファッションメタル", finish: "ポリッシュドゴールドトーン", size: "購入前にサイズを選択", story: "クリーンで機械的な輪郭を持つ幾何学リング。" }
+        }
       },
-      {
-        id: "midnight-set",
-        title: "Midnight Pendant Set",
-        badge: "Gift Set",
-        price: 79,
-        compare: 104,
-        image: "media/products/lilcutie-midnight-pendant-set.jpg",
-        material: "316L stainless steel",
-        finish: "Black polished finish",
-        size: "Pendant plus bracelet gift set",
-        story: "A matching black pendant and bracelet set for a simple first bundle."
+      de: {
+        pageTitle: "lilcutie | First Edition Schmuck", brandTagline: "First Edition Schmuck", heroKicker: "FIRST EDITION / 2026", heroBody: "Drei polierte Formen, die Licht einfangen und sich mit dir bewegen.", heroPrimary: "Ersten Drop kaufen", heroSecondary: "Die drei Pieces", proofMaterial: "Drei Formen. Eine erste Edition.", shopKicker: "ERSTER DROP", shopTitle: "DIE ERSTEN DREI", shopBody: "Coin-Anhänger, Sternen-Collier und geometrischer Ring. Einzeln oder als eigener Mix.", bundleTitle: "Alle drei, ein Edit", bundleBody: "Der komplette erste Drop in einer Auswahl.", bundleButton: "Komplettes Edit hinzufügen", footerBody: "Global gestylt, aus China versendet.", reviewsKicker: "DESIGNNOTIZEN", reviewsTitle: "Der Code des ersten Drops", reviewsBody: "Ausgewählt für klare Silhouetten, Textur aus der Nähe und wechselndes Licht.", reviewOneTitle: "Klare Geometrie.", reviewOneBody: "Präzise Kanten und polierte Flächen.", reviewOneName: "01 / FORM", reviewTwoTitle: "Für Layering gemacht.", reviewTwoBody: "Für Looks in jeder Kombination.", reviewTwoName: "02 / LIGHT", reviewThreeTitle: "Keine feste Uniform.", reviewThreeBody: "Trage die Pieces auf deine Art.", reviewThreeName: "03 / YOUR WAY", products: {
+          "octa-coin": { title: "Octa Coin Anhänger", badge: "FIRST EDITION", material: "Goldfarbenes Fashion-Metall", finish: "Poliertes Goldton-Finish", size: "Kettendetails vor dem Checkout bestätigen", story: "Ein achteckiger Coin-Anhänger mit einem dezenten achtzackigen Stern." },
+          "stardust-zircon": { title: "Stardust Zirkon-Collier", badge: "NEU", material: "Zirkonbesetztes Fashion-Metall", finish: "Poliertes Silberton-Finish", size: "Kettendetails vor dem Checkout bestätigen", story: "Eine feine Linie aus Zirkonsternen, die Licht bei jeder Bewegung aufnimmt." },
+          "gearline-ring": { title: "Gearline Ring", badge: "LIMITIERT", material: "Vakuumbeschichtetes Fashion-Metall", finish: "Poliertes Goldton-Finish", size: "Größe vor dem Checkout wählen", story: "Ein geometrischer Ring mit klarer, mechanischer Kontur." }
+        }
       },
-      {
-        id: "celestial-charm",
-        title: "Celestial Charm Necklace",
-        badge: "Soft Edge",
-        price: 46,
-        compare: 62,
-        image: "media/products/lilcutie-celestial-charm-necklace.jpg",
-        material: "316L stainless steel",
-        finish: "PVD silver",
-        size: "18 inch chain with charm cluster",
-        story: "A lighter charm necklace for customers who want the brand to feel softer."
-      },
-      {
-        id: "obsidian-cuff",
-        title: "Obsidian Cuff Bracelet",
-        badge: "Statement",
-        price: 52,
-        compare: 74,
-        image: "media/products/lilcutie-obsidian-cuff-bracelet.jpg",
-        material: "316L stainless steel",
-        finish: "Brushed silver with dark stone accent",
-        size: "Adjustable cuff placeholder size",
-        story: "A polished cuff with a dark center stone look for a sharper product mix."
+      es: {
+        pageTitle: "lilcutie | Joyería First Edition", brandTagline: "Joyería First Edition", heroKicker: "FIRST EDITION / 2026", heroBody: "Tres formas pulidas hechas para atrapar la luz y moverse contigo.", heroPrimary: "Comprar el primer drop", heroSecondary: "Conoce las tres piezas", proofMaterial: "Tres formas. Una primera edición.", shopKicker: "PRIMER DROP", shopTitle: "LAS PRIMERAS TRES", shopBody: "Un colgante coin, estrellas de zirconia y un anillo geométrico. Úsalos solos o a tu manera.", bundleTitle: "Las tres, un edit", bundleBody: "El primer drop completo en una sola selección.", bundleButton: "Agregar el edit completo", footerBody: "Estilo global, fulfillment desde China.", reviewsKicker: "NOTAS DE DISEÑO", reviewsTitle: "El código del primer drop", reviewsBody: "Piezas elegidas por su silueta limpia, textura cercana y luz cambiante.", reviewOneTitle: "Geometría limpia.", reviewOneBody: "Bordes definidos y superficies pulidas.", reviewOneName: "01 / FORMA", reviewTwoTitle: "Hecho para capas.", reviewTwoBody: "Una línea que funciona sola o combinada.", reviewTwoName: "02 / LUZ", reviewThreeTitle: "Sin uniforme fijo.", reviewThreeBody: "Llévalas a tu manera.", reviewThreeName: "03 / TU FORMA", products: {
+          "octa-coin": { title: "Colgante Octa Coin", badge: "FIRST EDITION", material: "Metal de moda tono dorado", finish: "Acabado pulido tono dorado", size: "Confirma detalles de cadena antes de pagar", story: "Un colgante coin octagonal con una estrella sutil de ocho puntas." },
+          "stardust-zircon": { title: "Collar Stardust Zircon", badge: "NUEVO", material: "Metal de moda con zirconias", finish: "Acabado pulido tono plata", size: "Confirma detalles de cadena antes de pagar", story: "Una línea de estrellas de zirconia que atrapa otra luz cuando te mueves." },
+          "gearline-ring": { title: "Anillo Gearline", badge: "LIMITADO", material: "Metal de moda con baño al vacío", finish: "Acabado pulido tono dorado", size: "Elige la talla antes de pagar", story: "Un anillo geométrico de borde dentado con perfil mecánico limpio." }
+        }
       }
+    };
+
+    Object.entries(launchCopy).forEach(([locale, copy]) => {
+      translations[locale] = {
+        ...translations[locale],
+        ...copy,
+        products: { ...translations[locale].products, ...copy.products }
+      };
+    });
+
+    const products = [
+      { id: "octa-coin", price: 48, compare: 60, image: "media/products/lilcutie-octa-coin-editorial.jpg" },
+      { id: "stardust-zircon", price: 42, compare: 54, image: "media/products/lilcutie-stardust-zircon-editorial.jpg" },
+      { id: "gearline-ring", price: 32, compare: 44, image: "media/products/lilcutie-gearline-ring-editorial.jpg" }
     ];
 
     const state = {
@@ -2186,9 +2239,9 @@
       });
 
       qs("[data-add-bundle]").addEventListener("click", () => {
-        addToCart("golden-shield", false);
-        addToCart("black-link", false);
-        addToCart("silver-signet", false);
+        addToCart("octa-coin", false);
+        addToCart("stardust-zircon", false);
+        addToCart("gearline-ring", false);
         openCart();
       });
 
