@@ -807,8 +807,16 @@
     }
 
     .modal-media {
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
       min-height: 100%;
       background: #ededeb;
+    }
+
+    .modal-stage {
+      min-height: 480px;
+      overflow: hidden;
+      background: #0c0c0c;
     }
 
     .modal-media img {
@@ -816,6 +824,38 @@
       height: 100%;
       min-height: 480px;
       object-fit: cover;
+    }
+
+    .product-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+      padding: 8px;
+      background: #0c0c0c;
+    }
+
+    .gallery-thumb {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      background: #1b1b1b;
+    }
+
+    .gallery-thumb.active {
+      border-color: var(--accent);
+    }
+
+    .gallery-thumb img {
+      min-height: 0;
+      object-fit: cover;
+      transition: transform .2s ease;
+    }
+
+    .gallery-thumb:hover img {
+      transform: scale(1.05);
     }
 
     .modal-copy {
@@ -959,6 +999,10 @@
       .modal-media img {
         min-height: 320px;
       }
+
+      .modal-stage {
+        min-height: 320px;
+      }
     }
 
     @media (max-width: 640px) {
@@ -1060,6 +1104,10 @@
       .product-card:nth-child(3) .product-media img {
         animation: product-float 9s 1.3s ease-in-out infinite alternate;
       }
+
+      .modal-stage img {
+        animation: product-showcase 10s ease-in-out infinite alternate;
+      }
     }
 
     @keyframes hero-breathe {
@@ -1075,6 +1123,11 @@
     @keyframes product-float {
       from { transform: scale(1.01) translateY(0); }
       to { transform: scale(1.045) translateY(-7px); }
+    }
+
+    @keyframes product-showcase {
+      from { transform: scale(1.01); }
+      to { transform: scale(1.07); }
     }
   </style>
 </head>
@@ -1316,7 +1369,10 @@
 
   <div class="modal-backdrop" data-modal-backdrop></div>
   <section class="modal" data-product-modal aria-label="Product details" aria-hidden="true" data-i18n-attr="aria-label:productDetails">
-    <div class="modal-media"><img src="media/products/lilcutie-octa-coin-editorial.jpg" data-modal-image alt=""></div>
+    <div class="modal-media">
+      <div class="modal-stage"><img src="media/products/lilcutie-octa-coin-editorial.jpg" data-modal-image alt=""></div>
+      <div class="product-gallery" data-product-gallery aria-label="Product image gallery"></div>
+    </div>
     <div class="modal-copy">
       <button class="close-button" type="button" data-modal-close aria-label="Close product details" data-i18n-attr="aria-label:closeProduct">X</button>
       <div class="kicker" data-modal-badge></div>
@@ -2026,9 +2082,36 @@
     });
 
     const products = [
-      { id: "octa-coin", price: 48, compare: 60, image: "media/products/lilcutie-octa-coin-editorial.jpg" },
-      { id: "stardust-zircon", price: 42, compare: 54, image: "media/products/lilcutie-stardust-zircon-editorial.jpg" },
-      { id: "gearline-ring", price: 32, compare: 44, image: "media/products/lilcutie-gearline-ring-editorial.jpg" }
+      {
+        id: "octa-coin",
+        price: 48,
+        compare: 60,
+        image: "media/products/lilcutie-octa-coin-editorial.jpg",
+        gallery: [
+          "media/products/lilcutie-octa-coin-worn.jpg",
+          "media/products/lilcutie-octa-coin-detail.jpg"
+        ]
+      },
+      {
+        id: "stardust-zircon",
+        price: 42,
+        compare: 54,
+        image: "media/products/lilcutie-stardust-zircon-editorial.jpg",
+        gallery: [
+          "media/products/lilcutie-stardust-zircon-worn.jpg",
+          "media/products/lilcutie-stardust-zircon-detail.jpg"
+        ]
+      },
+      {
+        id: "gearline-ring",
+        price: 32,
+        compare: 44,
+        image: "media/products/lilcutie-gearline-ring-editorial.jpg",
+        gallery: [
+          "media/products/lilcutie-gearline-ring-worn.jpg",
+          "media/products/lilcutie-gearline-ring-detail.jpg"
+        ]
+      }
     ];
 
     const state = {
@@ -2184,12 +2267,36 @@
         : `<p>${t("cartEmpty")}</p>`;
     }
 
+    function productImages(product) {
+      return [product.image, ...(product.gallery || [])];
+    }
+
+    function setGalleryImage(product, index) {
+      const images = productImages(product);
+      const image = images[index] || images[0];
+      const copy = productCopy(product);
+      qs("[data-modal-image]").src = image;
+      qs("[data-modal-image]").alt = `${copy.title} ${index + 1}`;
+      qsa("[data-gallery-index]").forEach((button) => {
+        button.classList.toggle("active", Number(button.dataset.galleryIndex) === index);
+      });
+    }
+
+    function renderProductGallery(product) {
+      const copy = productCopy(product);
+      qs("[data-product-gallery]").innerHTML = productImages(product).map((image, index) => `
+        <button class="gallery-thumb ${index === 0 ? "active" : ""}" type="button" data-gallery-index="${index}" aria-label="View ${copy.title} image ${index + 1}">
+          <img src="${image}" alt="${copy.title} ${index + 1}">
+        </button>
+      `).join("");
+      setGalleryImage(product, 0);
+    }
+
     function openProduct(id, show = true) {
       const product = byId(id);
       const copy = productCopy(product);
       state.activeProduct = id;
-      qs("[data-modal-image]").src = product.image;
-      qs("[data-modal-image]").alt = copy.title;
+      renderProductGallery(product);
       qs("[data-modal-badge]").textContent = copy.badge;
       qs("[data-modal-title]").textContent = copy.title;
       qs("[data-modal-price]").textContent = money(product.price);
@@ -2232,10 +2339,14 @@
         const productButton = event.target.closest("[data-product]");
         const addButton = event.target.closest("[data-add]");
         const qtyButton = event.target.closest("[data-qty]");
+        const galleryButton = event.target.closest("[data-gallery-index]");
 
         if (productButton) openProduct(productButton.dataset.product);
         if (addButton) addToCart(addButton.dataset.add);
         if (qtyButton) changeQty(qtyButton.dataset.qty, Number(qtyButton.dataset.delta));
+        if (galleryButton && state.activeProduct) {
+          setGalleryImage(byId(state.activeProduct), Number(galleryButton.dataset.galleryIndex));
+        }
       });
 
       qs("[data-add-bundle]").addEventListener("click", () => {
